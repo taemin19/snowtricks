@@ -1,1 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
+
+/* Basic styles
+   ------------------------------------------------------------------------- */
+body {
+  min-height: 100%;
+  font-family: 'Lato', 'Arial', 'sans-serif';
+}
+
+/* Fonts
+   ------------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: 'Roboto', 'sans-serif';
+}
+.navbar-brand {
+  font-family: 'Shadows Into Light Two', cursive, 'sans-serif';
+}

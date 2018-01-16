@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Home
+{% endblock %}
+
+{% block body_id 'homepage' %}
+
+{% block body %}
+    <section class="jumbotron jumbotron-fluid d-flex flex-column justify-content-center text-center text-white">
+        <div class="container">
+            <h1 class="text-uppercase">Join The Snowboard</h1>
+            <h1 class="text-uppercase">Riders Community</h1>
+            <p class="pt-5">
+                <a href="#tricks" class="btn btn-primary btn-lg">See Tricks&nbsp;&nbsp;<i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+            </p>
+        </div>
+    </section>
+
+    <section id="tricks" class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="text-uppercase font-weight-bold">Learn Tricks</h2>
+                    <p class="lead text-muted">Discover and learn thousands of new tricks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

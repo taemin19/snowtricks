@@ -3,18 +3,17 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class CommunityController
+class CommunityController extends Controller
 {
     /**
      * @Route("/", name="community_index")
      */
     public function indexAction()
     {
-        return new Response(
-            '<html><body>Community Index</body></html>'
-        );
+        return $this->render('community/index.html.twig');
     }
 
     /**
@@ -22,9 +21,7 @@ class CommunityController
      */
     public function showAction()
     {
-        return new Response(
-            '<html><body>Community Show</body></html>'
-        );
+        return $this->render('community/show.html.twig');
     }
 
     /**
@@ -32,9 +29,7 @@ class CommunityController
      */
     public function addAction()
     {
-        return new Response(
-            '<html><body>Community Add</body></html>'
-        );
+        return $this->render('community/add.html.twig');
     }
 
     /**
@@ -42,8 +37,6 @@ class CommunityController
      */
     public function editAction()
     {
-        return new Response(
-            '<html><body>Community Edit</body></html>'
-        );
+        return $this->render('community/edit.html.twig');
     }
 }

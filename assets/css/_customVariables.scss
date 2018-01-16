@@ -1,0 +1,24 @@
+/* Custom colors
+   ------------------------------------------------------------------------- */
+$st-dark: #272727;
+$st-gray: #f9f9f9;
+$st-red: #f41237;
+
+/* Color system
+   ------------------------------------------------------------------------- */
+//$primary:       $blue !default;
+$primary:       $st-red;
+//$secondary:     $gray-600 !default;
+//$success:       $green !default;
+//$info:          $cyan !default;
+//$warning:       $yellow !default;
+//$danger:        $red !default;
+//$light:         $gray-100 !default;
+$light:         $st-gray;
+//$dark:          $gray-800 !default;
+$dark:          $st-dark;
+
+//$navbar-dark-color:                 rgba($white,.5) !default;
+$navbar-dark-color:                 rgba(255,255,255,1);
+//$navbar-dark-toggler-border-color:  rgba($white,.1) !default;
+$navbar-dark-toggler-border-color:  rgba(255,255,255,0);

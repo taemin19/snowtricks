@@ -32,21 +32,15 @@
                         </a>
 
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                            <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
                         </button>
 
-                        <div class="navbar-collapse collapse justify-content-end" id="navbarNav">
-                            <ul class="navbar-nav align-items-center">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('community_index') }}">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Sign In</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Sign Up</a>
-                                </li>
-                            </ul>
+                        <div class="navbar-collapse collapse text-center justify-content-end" id="navbarNav">
+                            <div class="navbar-nav">
+                                <a class="nav-link" href="{{ path('community_index')}}">Home</a>
+                                <a class="nav-link" href="#">Sign In</a>
+                                <a class="nav-link" href="#">Sign Up</a>
+                            </div>
                         </div>
                     </div>
                 </nav>
@@ -59,7 +53,7 @@
             <footer class="bg-dark py-4">
                 <div class="container">
                     <div class="row py-4">
-                        <div class="col-12 col-sm-8 text-center text-sm-left pb-4">
+                        <div class="col-sm-8 text-center text-sm-left pb-4">
                             <a class="navbar-brand text-white text-uppercase mr-auto pb-4" href="{{ path('community_index') }}">
                                 <img src="{{ asset('logo/st-logo.png') }}" class="rounded d-inline-block align-top" alt="Logo SnowTricks">
                                 SnowTricks
@@ -70,11 +64,11 @@
                                 <a href="#" class="nav-link text-white">Sign Up</a>
                             </nav>
                         </div>
-                        <div class="col">
-                            <nav class="nav justify-content-center">
-                                <a href="#" class="nav-link text-white pr-1"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-                                <a href="#" class="nav-link text-white pr-1"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-                                <a href="#" class="nav-link text-white pr-1"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
+                        <div class="col-sm-4">
+                            <nav class="social-link nav justify-content-center justify-content-sm-end">
+                                <a href="#" class="nav-link text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#" class="nav-link text-white"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#" class="nav-link text-white"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                             </nav>
                         </div>
                     </div>

@@ -35,6 +35,12 @@ class Comment
     private $createAt;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trick")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $trick;
+
+    /**
      * Get id.
      *
      * @return int
@@ -114,5 +120,29 @@ class Comment
     public function getCreateAt()
     {
         return $this->createAt;
+    }
+
+    /**
+     * Set trick.
+     *
+     * @param \AppBundle\Entity\Trick $trick
+     *
+     * @return Comment
+     */
+    public function setTrick(\AppBundle\Entity\Trick $trick)
+    {
+        $this->trick = $trick;
+
+        return $this;
+    }
+
+    /**
+     * Get trick.
+     *
+     * @return \AppBundle\Entity\Trick
+     */
+    public function getTrick()
+    {
+        return $this->trick;
     }
 }

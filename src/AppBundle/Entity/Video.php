@@ -23,6 +23,12 @@ class Video
     private $filePath;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trick")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $trick;
+
+    /**
      * Get id.
      *
      * @return int
@@ -54,5 +60,29 @@ class Video
     public function getFilePath()
     {
         return $this->filePath;
+    }
+
+    /**
+     * Set trick.
+     *
+     * @param \AppBundle\Entity\Trick $trick
+     *
+     * @return Video
+     */
+    public function setTrick(\AppBundle\Entity\Trick $trick)
+    {
+        $this->trick = $trick;
+
+        return $this;
+    }
+
+    /**
+     * Get trick.
+     *
+     * @return \AppBundle\Entity\Trick
+     */
+    public function getTrick()
+    {
+        return $this->trick;
     }
 }

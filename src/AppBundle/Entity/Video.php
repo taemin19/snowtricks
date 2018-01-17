@@ -23,7 +23,7 @@ class Video
     private $filePath;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trick")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trick", inversedBy="videos")
      * @ORM\JoinColumn(nullable=false)
      */
     private $trick;

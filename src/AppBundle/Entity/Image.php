@@ -28,7 +28,7 @@ class Image
     private $filePath;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trick")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trick", inversedBy="images")
      * @ORM\JoinColumn(nullable=false)
      */
     private $trick;

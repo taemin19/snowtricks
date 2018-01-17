@@ -64,6 +64,16 @@ class Trick
     private $categories;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="trick")
+     */
+    private $images;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Video", mappedBy="trick")
+     */
+    private $videos;
+
+    /**
      * Get id.
      *
      * @return int
@@ -247,6 +257,8 @@ class Trick
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     /**
@@ -277,5 +289,77 @@ class Trick
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add image.
+     *
+     * @param \AppBundle\Entity\Image $image
+     *
+     * @return Trick
+     */
+    public function addImage(Image $image)
+    {
+        $this->images[] = $image;
+
+        $image->setTrick($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove image.
+     *
+     * @param \AppBundle\Entity\Image $image
+     */
+    public function removeImage(Image $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Add video.
+     *
+     * @param \AppBundle\Entity\Video $video
+     *
+     * @return Trick
+     */
+    public function addVideo(Video $video)
+    {
+        $this->videos[] = $video;
+
+        $video->setTrick($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove video.
+     *
+     * @param \AppBundle\Entity\Video $video
+     */
+    public function removeVideo(Video $video)
+    {
+        $this->videos->removeElement($video);
+    }
+
+    /**
+     * Get videos.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVideos()
+    {
+        return $this->videos;
     }
 }

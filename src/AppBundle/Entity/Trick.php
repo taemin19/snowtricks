@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -55,6 +56,12 @@ class Trick
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", cascade={"persist"})
+     * @ORM\JoinTable(name="st_advert_category")
+     */
+    private $categories;
 
     /**
      * Get id.
@@ -232,5 +239,43 @@ class Trick
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
+    /**
+     * Add category.
+     *
+     * @param \AppBundle\Entity\Category $category
+     */
+    public function addCategory(Category $category)
+    {
+        $this->categories[] = $category;
+    }
+
+    /**
+     * Remove category.
+     *
+     * @param \AppBundle\Entity\Category $category
+     */
+    public function removeCategory(Category $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

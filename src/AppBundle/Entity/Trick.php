@@ -59,7 +59,7 @@ class Trick
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", cascade={"persist"})
-     * @ORM\JoinTable(name="st_advert_category")
+     * @ORM\JoinTable(name="st_trick_category")
      */
     private $categories;
 

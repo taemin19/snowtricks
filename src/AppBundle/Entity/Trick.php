@@ -40,6 +40,11 @@ class Trick
     private $content;
 
     /**
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published = true;
+
+    /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createAt", type="datetime")
      */
@@ -177,6 +182,30 @@ class Trick
     public function getContent()
     {
         return $this->content;
+    }
+    
+    /**
+     * Set published.
+     *
+     * @param bool $published
+     *
+     * @return Trick
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published.
+     *
+     * @return bool
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 
     /**

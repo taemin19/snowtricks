@@ -92,14 +92,10 @@ class Trick
      * Set author.
      *
      * @param string $author
-     *
-     * @return Trick
      */
     public function setAuthor($author)
     {
         $this->author = $author;
-
-        return $this;
     }
 
     /**
@@ -116,14 +112,10 @@ class Trick
      * Set title.
      *
      * @param string $title
-     *
-     * @return Trick
      */
     public function setTitle($title)
     {
         $this->title = $title;
-
-        return $this;
     }
 
     /**
@@ -140,14 +132,10 @@ class Trick
      * Set description.
      *
      * @param string $description
-     *
-     * @return Trick
      */
     public function setDescription($description)
     {
         $this->description = $description;
-
-        return $this;
     }
 
     /**
@@ -164,14 +152,10 @@ class Trick
      * Set content.
      *
      * @param string $content
-     *
-     * @return Trick
      */
     public function setContent($content)
     {
         $this->content = $content;
-
-        return $this;
     }
 
     /**
@@ -183,19 +167,15 @@ class Trick
     {
         return $this->content;
     }
-    
+
     /**
      * Set published.
      *
      * @param bool $published
-     *
-     * @return Trick
      */
     public function setPublished($published)
     {
         $this->published = $published;
-
-        return $this;
     }
 
     /**
@@ -212,14 +192,10 @@ class Trick
      * Set createAt.
      *
      * @param \DateTime $createAt
-     *
-     * @return Trick
      */
     public function setCreateAt($createAt)
     {
         $this->createAt = $createAt;
-
-        return $this;
     }
 
     /**
@@ -236,14 +212,10 @@ class Trick
      * Set updateAt.
      *
      * @param \DateTime $updateAt
-     *
-     * @return Trick
      */
     public function setUpdateAt($updateAt)
     {
         $this->updateAt = $updateAt;
-
-        return $this;
     }
 
     /**
@@ -260,14 +232,10 @@ class Trick
      * Set slug.
      *
      * @param string $slug
-     *
-     * @return Trick
      */
     public function setSlug($slug)
     {
         $this->slug = $slug;
-
-        return $this;
     }
 
     /**
@@ -324,16 +292,12 @@ class Trick
      * Add image.
      *
      * @param \AppBundle\Entity\Image $image
-     *
-     * @return Trick
      */
     public function addImage(Image $image)
     {
         $this->images[] = $image;
 
         $image->setTrick($this);
-
-        return $this;
     }
 
     /**
@@ -360,16 +324,12 @@ class Trick
      * Add video.
      *
      * @param \AppBundle\Entity\Video $video
-     *
-     * @return Trick
      */
     public function addVideo(Video $video)
     {
         $this->videos[] = $video;
 
         $video->setTrick($this);
-
-        return $this;
     }
 
     /**

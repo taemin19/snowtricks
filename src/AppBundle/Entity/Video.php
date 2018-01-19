@@ -42,14 +42,10 @@ class Video
      * Set filePath.
      *
      * @param string $filePath
-     *
-     * @return Video
      */
     public function setFilePath($filePath)
     {
         $this->filePath = $filePath;
-
-        return $this;
     }
 
     /**
@@ -66,14 +62,10 @@ class Video
      * Set trick.
      *
      * @param \AppBundle\Entity\Trick $trick
-     *
-     * @return Video
      */
     public function setTrick(\AppBundle\Entity\Trick $trick)
     {
         $this->trick = $trick;
-
-        return $this;
     }
 
     /**

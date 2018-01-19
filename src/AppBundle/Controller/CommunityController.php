@@ -2,14 +2,15 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 
 class CommunityController extends Controller
 {
     /**
-     * @Route("/", name="community_index")
+     * @Route("/snowboard", name="trick_index")
+     * @Method("GET")
      */
     public function indexAction()
     {
@@ -17,26 +18,11 @@ class CommunityController extends Controller
     }
 
     /**
-     * @Route("/trick", name="community_show")
+     * @Route("/snowboard/slug", name="trick_show")
+     * @Method("GET")
      */
     public function showAction()
     {
         return $this->render('community/show.html.twig');
-    }
-
-    /**
-     * @Route("/trick/add", name="community_add")
-     */
-    public function addAction()
-    {
-        return $this->render('community/add.html.twig');
-    }
-
-    /**
-     * @Route("/trick/edit", name="community_edit")
-     */
-    public function editAction()
-    {
-        return $this->render('community/edit.html.twig');
     }
 }

@@ -3,6 +3,10 @@
 $st-dark: #272727;
 $st-gray: #f9f9f9;
 $st-red: #f41237;
+$basics: #ffa400;
+$grabs:#25b65f;
+$jumps-spins: #00a7d2;
+$slides: #ff4f00;
 
 /* Color system
    ------------------------------------------------------------------------- */
@@ -17,6 +21,21 @@ $primary:       $st-red;
 $light:         $st-gray;
 //$dark:          $gray-800 !default;
 $dark:          $st-dark;
+
+$colors: () !default;
+$colors: map-merge((
+  "st-dark":    $st-dark,
+  "st-gray":    $st-gray,
+  "st-red":     $st-red,
+), $colors);
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "basics":      $basics,
+  "grabs":       $grabs,
+  "jumps-spins": $jumps-spins,
+  "slides":      $slides,
+), $theme-colors);
 
 //$navbar-dark-color:                 rgba($white,.5) !default;
 $navbar-dark-color:                 rgba(255,255,255,1);

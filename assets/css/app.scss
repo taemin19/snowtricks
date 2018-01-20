@@ -22,6 +22,15 @@ button:focus {
   outline: none;
 }
 
+/* Button styles
+   ------------------------------------------------------------------------- */
+.btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
 /* Header
    ------------------------------------------------------------------------- */
 #homepage header {
@@ -53,11 +62,29 @@ button:focus {
   font-weight: 800;
 }
 
+/* Trick card
+   ------------------------------------------------------------------------- */
+.card a:hover {
+  text-decoration: none;
+}
+.card-img-top {
+  height: 250px;
+}
+
 /* Responsive
    ------------------------------------------------------------------------- */
 @include media-breakpoint-up(sm) {
+  .btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+  }
   #homepage .jumbotron h1 {
     font-size: 2.8rem;
+  }
+  .card-img-top {
+    height: 300px;
   }
 }
 @include media-breakpoint-up(md) {
@@ -69,6 +96,12 @@ button:focus {
   }
 }
 @include media-breakpoint-up(lg) {
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+  }
   #homepage .jumbotron h1 {
     font-size: 4.8rem;
   }

@@ -12,17 +12,25 @@
             <h1 class="text-uppercase">Join The Snowboard</h1>
             <h1 class="text-uppercase">Riders Community</h1>
             <p class="pt-5">
-                <a href="#tricks" class="btn btn-primary btn-lg">See Tricks&nbsp;&nbsp;<i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+                <a href="#tricks" class="btn btn-primary btn-sm text-uppercase">See Tricks&nbsp;&nbsp;<i class="fa fa-arrow-down" aria-hidden="true"></i></a>
             </p>
         </div>
     </section>
 
-    <section id="tricks" class="py-4">
+    <section id="tricks" class="py-4 mb-4">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
                     <h2 class="text-uppercase font-weight-bold">Learn Tricks</h2>
                     <p class="lead text-muted">Discover and learn thousands of new tricks.</p>
+                </div>
+            </div>
+            <div class="row py-4">
+                {{ include('home/tricks.html.twig') }}
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <a href="{{ path('trick_index') }}" class="btn btn-outline-dark text-uppercase">See All Tricks</a>
                 </div>
             </div>
         </div>

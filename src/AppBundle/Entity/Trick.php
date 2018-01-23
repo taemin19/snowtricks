@@ -80,6 +80,11 @@ class Trick
     private $videos;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="trick")
+     */
+    private $comments;
+
+    /**
      * Get id.
      *
      * @return int
@@ -351,5 +356,37 @@ class Trick
     public function getVideos()
     {
         return $this->videos;
+    }
+
+    /**
+     * Add comment.
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        $comment->setTrick($this);
+    }
+
+    /**
+     * Remove comment.
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     */
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

@@ -24,9 +24,13 @@ $dark:          $st-dark;
 
 $colors: () !default;
 $colors: map-merge((
-  "st-dark":    $st-dark,
-  "st-gray":    $st-gray,
-  "st-red":     $st-red,
+  "st-dark":     $st-dark,
+  "st-gray":     $st-gray,
+  "st-red":      $st-red,
+  "basics":      $basics,
+  "grabs":       $grabs,
+  "jumps-spins": $jumps-spins,
+  "slides":      $slides,
 ), $colors);
 
 $theme-colors: () !default;

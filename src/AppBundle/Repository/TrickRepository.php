@@ -28,6 +28,18 @@ class TrickRepository extends EntityRepository
         return new Paginator($qb, true);
     }
 
+    public function getLatestWithCategory(int $limit)
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->leftJoin('t.categories', 'c')
+            ->addSelect('c')
+            ->orderBy('t.createAt', 'DESC')
+            ->setMaxResults($limit)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
     public function getOneBySlug($slug)
     {
         $qb = $this->createQueryBuilder('t')
@@ -39,8 +51,10 @@ class TrickRepository extends EntityRepository
             ->addSelect('i')
             ->leftJoin('t.videos', 'v')
             ->addSelect('v')
+            ->leftJoin('t.comments', 'com')
+            ->addSelect('com')
         ;
 
-        return $qb->getQuery()->getResult();
+        return $qb->getQuery()->getSingleResult();
     }
 }

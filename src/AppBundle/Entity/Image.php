@@ -47,14 +47,10 @@ class Image
      * Set alt.
      *
      * @param string $alt
-     *
-     * @return Image
      */
     public function setAlt($alt)
     {
         $this->alt = $alt;
-
-        return $this;
     }
 
     /**
@@ -71,14 +67,10 @@ class Image
      * Set filePath.
      *
      * @param string $filePath
-     *
-     * @return Image
      */
     public function setFilePath($filePath)
     {
         $this->filePath = $filePath;
-
-        return $this;
     }
 
     /**
@@ -95,14 +87,10 @@ class Image
      * Set trick.
      *
      * @param \AppBundle\Entity\Trick $trick
-     *
-     * @return Image
      */
     public function setTrick(\AppBundle\Entity\Trick $trick)
     {
         $this->trick = $trick;
-
-        return $this;
     }
 
     /**

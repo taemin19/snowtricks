@@ -1,0 +1,13 @@
+<div class="trick-menu bg-white rounded my-4 p-4">
+    <p class="text-muted font-weight-bold">Latest Tricks</p>
+    <nav class="nav flex-column">
+        {% for trick in tricks %}
+            <a class="nav-link text-dark pl-0" href="{{ path('trick_show', {'slug': trick.slug}) }}">
+                {% for category in trick.categories %}
+                    <i class="fa fa-circle text-{{ category.slug }}" aria-hidden="true"></i>
+                {% endfor %}
+                {{ trick.title }}
+            </a>
+        {% endfor %}
+    </nav>
+</div>

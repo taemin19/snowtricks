@@ -35,7 +35,7 @@ class Comment
     private $createAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trick")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trick", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $trick;
@@ -54,14 +54,10 @@ class Comment
      * Set author.
      *
      * @param string $author
-     *
-     * @return Comment
      */
     public function setAuthor($author)
     {
         $this->author = $author;
-
-        return $this;
     }
 
     /**
@@ -78,14 +74,10 @@ class Comment
      * Set message.
      *
      * @param string $message
-     *
-     * @return Comment
      */
     public function setMessage($message)
     {
         $this->message = $message;
-
-        return $this;
     }
 
     /**
@@ -102,14 +94,10 @@ class Comment
      * Set createAt.
      *
      * @param \DateTime $createAt
-     *
-     * @return Comment
      */
     public function setCreateAt($createAt)
     {
         $this->createAt = $createAt;
-
-        return $this;
     }
 
     /**
@@ -126,14 +114,10 @@ class Comment
      * Set trick.
      *
      * @param \AppBundle\Entity\Trick $trick
-     *
-     * @return Comment
      */
     public function setTrick(\AppBundle\Entity\Trick $trick)
     {
         $this->trick = $trick;
-
-        return $this;
     }
 
     /**

@@ -22,6 +22,10 @@ button:focus {
   outline: none;
 }
 
+/* Button styles
+   ------------------------------------------------------------------------- */
+
+
 /* Header
    ------------------------------------------------------------------------- */
 #homepage header {
@@ -53,24 +57,65 @@ button:focus {
   font-weight: 800;
 }
 
+/* Trick view
+   ------------------------------------------------------------------------- */
+#trick_show {
+  background-color: $st-gray;
+}
+
+/* Trick card
+   ------------------------------------------------------------------------- */
+.card a:hover {
+  text-decoration: none;
+}
+.card-img-top {
+  height: 250px;
+}
+
 /* Responsive
    ------------------------------------------------------------------------- */
 @include media-breakpoint-up(sm) {
+  #homepage .btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+  }
   #homepage .jumbotron h1 {
     font-size: 2.8rem;
+  }
+  .card-img-top {
+    height: 300px;
   }
 }
 @include media-breakpoint-up(md) {
   #homepage .jumbotron h1 {
     font-size: 3.8rem;
   }
+  #trick_index .jumbotron {
+    background: url("/images/snowtricks.png") no-repeat;
+    background-position: 47vw;
+    background-size: 700px 600px;
+  }
+  #trick_index .jumbotron p.lead {
+    width: 75%;
+  }
   .social-link .fa {
     font-size: 1.7rem;
   }
 }
 @include media-breakpoint-up(lg) {
+  #homepage .btn {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+  }
   #homepage .jumbotron h1 {
     font-size: 4.8rem;
+  }
+  #trick_index .jumbotron p.lead {
+    width: 65%;
   }
   .social-link .fa {
     font-size: 2rem;

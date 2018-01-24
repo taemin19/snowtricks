@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Trick;
-use AppBundle\Entity\Comment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CommunityController extends Controller
 {
     const PER_PAGE = 6;
+    const PER_MENU = 8;
 
     /**
      * @Route("/", defaults={"page": "1"}, name="trick_index")
@@ -48,9 +48,10 @@ class CommunityController extends Controller
      */
     public function showAction(string $slug)
     {
-        $repository =$this->getDoctrine()->getRepository(Trick::class);
-
-        $trick = $repository->getOneBySlug($slug);
+        $trick = $this->getDoctrine()
+            ->getRepository(Trick::class)
+            ->getOneBySlug($slug)
+        ;
 
         if (!$trick) {
             throw $this->createNotFoundException('The trick does not exist');
@@ -58,6 +59,18 @@ class CommunityController extends Controller
 
         return $this->render('community/show.html.twig', [
             'trick' => $trick
+        ]);
+    }
+
+    public function menuAction()
+    {
+        $tricks = $this->getDoctrine()
+            ->getRepository(Trick::class)
+            ->getLatestWithCategory(self::PER_MENU)
+        ;
+
+        return $this->render('community/menu.html.twig', [
+            'tricks' => $tricks
         ]);
     }
 }

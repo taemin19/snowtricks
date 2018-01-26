@@ -1,0 +1,7 @@
+AppBundle\Entity\User:
+    user_{1..8}:
+        fullName: <firstName()> <lastName()>
+        username: <username()>
+        email: <email()>
+        password: user<current()>
+        roles: [ROLE_ADMIN]

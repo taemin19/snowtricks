@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Log In
+{% endblock %}
+
+{% block body_id 'login' %}
+
+{# Don't display header and footer #}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+    <div class="container text-center py-4">
+        <div class="row">
+            <form class="form-signin" action="{{ path('login') }}" method="post">
+                <a href="{{ path('homepage') }}">
+                    <img class="rounded mb-4" src="{{ asset('logo/st-logo-m.png') }}" alt="SnowTricks Logo">
+                </a>
+
+                <h1 class="h3 mb-3">Sign In</h1>
+
+                {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error.message }}
+                    </div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="username" class="sr-only">Username</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Username" autofocus="" autocomplete="off" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" id="password" name="_password" placeholder="Password" autocomplete="off" class="form-control">
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+                 <div class="d-flex flex-column mb-3">
+                     <a class="text-muted mb-3" href="#">No account yet? Sign Up</a>
+                     <a class="text-muted" href="#">Forgot Password?</a>
+                 </div>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+
+                <div class="text-left mt-2">
+                    <a class="text-dark" href="{{ path('homepage') }}">Back<i class="fa fa-long-arrow-left ml-2" aria-hidden="true"></i></a>
+                </div>
+
+                <p class="mt-5 mb-3 text-muted">© 2017 SnowTricks</p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

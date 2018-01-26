@@ -36,10 +36,29 @@
                         </button>
 
                         <div class="navbar-collapse collapse text-center justify-content-end" id="navbarNav">
-                            <div class="navbar-nav">
+                            <div class="navbar-nav align-items-sm-center">
                                 <a class="nav-link" href="{{ path('homepage')}}">Home</a>
-                                <a class="nav-link" href="#">Sign In</a>
-                                <a class="nav-link" href="#">Sign Up</a>
+                                <a class="nav-link" href="{{ path('trick_index')}}">Tricks</a>
+                                
+                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                    <div class="dropdown">
+                                        <a class="nav-link dropdown-toggle d-block d-sm-none" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Account
+                                        </a>
+                                        <a class="nav-link dropdown-toggle text-white d-none d-sm-block" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="#">My Profile</a>
+                                            <a class="dropdown-item" href="{{ path('admin_trick_index') }}">My Tricks</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('logout') }}">Sign Out</a>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <a class="nav-link" href="{{ path('login') }}">Sign In</a>
+                                    <a class="nav-link" href="#">Sign Up</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -60,8 +79,14 @@
                             </a>
                             <nav class="nav flex-column flex-sm-row">
                                 <a href="{{ path('homepage') }}" class="nav-link text-white pl-sm-0">Home</a>
-                                <a href="#" class="nav-link text-white">Sign In</a>
-                                <a href="#" class="nav-link text-white">Sign Up</a>
+                                <a href="{{ path('trick_index') }}" class="nav-link text-white">Tricks</a>
+
+                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                    <a href="{{ path('logout') }}" class="nav-link text-white">Sign out</a>
+                                {% else %}
+                                    <a href="{{ path('login') }}" class="nav-link text-white">Sign In</a>
+                                    <a href="#" class="nav-link text-white">Sign Up</a>
+                                {% endif %}
                             </nav>
                         </div>
                         <div class="col-sm-4">

@@ -40,7 +40,7 @@
                                 <a class="nav-link" href="{{ path('homepage')}}">Home</a>
                                 <a class="nav-link" href="{{ path('trick_index')}}">Tricks</a>
                                 
-                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                     <div class="dropdown">
                                         <a class="nav-link dropdown-toggle d-block d-sm-none" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Account
@@ -81,7 +81,7 @@
                                 <a href="{{ path('homepage') }}" class="nav-link text-white pl-sm-0">Home</a>
                                 <a href="{{ path('trick_index') }}" class="nav-link text-white">Tricks</a>
 
-                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                     <a href="{{ path('logout') }}" class="nav-link text-white">Sign out</a>
                                 {% else %}
                                     <a href="{{ path('login') }}" class="nav-link text-white">Sign In</a>

@@ -28,25 +28,27 @@
 
                 <div class="form-group">
                     <label for="username" class="sr-only">Username</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Username" autofocus="" autocomplete="off" class="form-control">
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Username or Email" autofocus="" autocomplete="off" class="form-control">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="password" class="sr-only">Password</label>
                     <input type="password" id="password" name="_password" placeholder="Password" autocomplete="off" class="form-control">
                 </div>
+                <div class="form-check text-left pl-1">
+                    <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                    <label for="remember_me">Remember Me</label>
+                </div>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
 
-                 <div class="d-flex flex-column mb-3">
-                     <a class="text-muted mb-3" href="#">No account yet? Sign Up</a>
-                     <a class="text-muted" href="#">Forgot Password?</a>
-                 </div>
+                <button class="btn btn-lg btn-primary btn-block my-3" type="submit">Sign In</button>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
-
+                <div class="d-flex flex-column mb-3">
+                    <a class="text-muted mb-3" href="#">No account yet? Sign Up</a>
+                    <a class="text-muted" href="#">Forgot Password?</a>
+                </div>
                 <div class="text-left mt-2">
                     <a class="text-dark" href="{{ path('homepage') }}">Back<i class="fa fa-long-arrow-left ml-2" aria-hidden="true"></i></a>
                 </div>
-
                 <p class="mt-5 mb-3 text-muted">© 2017 SnowTricks</p>
             </form>
         </div>

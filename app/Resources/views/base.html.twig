@@ -57,7 +57,7 @@
                                     </div>
                                 {% else %}
                                     <a class="nav-link" href="{{ path('login') }}">Sign In</a>
-                                    <a class="nav-link" href="#">Sign Up</a>
+                                    <a class="nav-link" href="{{ path('user_register') }}">Sign Up</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                                     <a href="{{ path('logout') }}" class="nav-link text-white">Sign out</a>
                                 {% else %}
                                     <a href="{{ path('login') }}" class="nav-link text-white">Sign In</a>
-                                    <a href="#" class="nav-link text-white">Sign Up</a>
+                                    <a href="{{ path('user_register') }}" class="nav-link text-white">Sign Up</a>
                                 {% endif %}
                             </nav>
                         </div>

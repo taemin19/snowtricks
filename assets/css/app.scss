@@ -65,24 +65,17 @@ body#trick_show {
   background-color: $st-gray;
 }
 
-/* Page: 'Login'
+/* Page: 'Login' 'Register'
    ------------------------------------------------------------------------- */
-body#login {
+body#login, body#register {
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  flex-direction: column;
-  -ms-flex-align: center;
-  -ms-flex-pack: center;
-  -webkit-box-align: center;
-  align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
   background-color: $st-gray;
 }
-body#login .form-signin {
+body#login .form-login, body#register .form-register {
   width: 100%;
   max-width: 330px;
   padding: 15px;
@@ -116,6 +109,14 @@ body#login .form-signin {
   }
   body#trick_index .jumbotron p.lead {
     width: 75%;
+  }
+  body#login, body#register {
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   footer .social-link .fa {
     font-size: 1.7rem;

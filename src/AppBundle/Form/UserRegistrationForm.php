@@ -17,10 +17,7 @@ class UserRegistrationForm extends AbstractType
         $builder
             ->add('fullName', null, [
                 'label_attr' => ['class' => 'sr-only'],
-                'attr' => [
-                    'placeholder' => 'Full name',
-                    'autofocus' => ''
-                ]
+                'attr' => ['placeholder' => 'Full name']
             ])
             ->add('email', EmailType::class, [
                 'label_attr' => ['class' => 'sr-only'],

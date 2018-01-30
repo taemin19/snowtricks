@@ -39,7 +39,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="json")
      */
     private $roles = [];
 
@@ -155,7 +155,12 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return $this->roles;
+        $roles = $this->roles;
+        // guarantees that a user always has at least one role for security
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+        return array_unique($roles);
     }
 
     /**

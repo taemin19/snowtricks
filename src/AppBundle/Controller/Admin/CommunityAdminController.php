@@ -11,11 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Controller used to manage community contents in the admin part of the site.
  *
- * Class CommunityController
  * @Route("/admin/trick")
  * @Security("has_role('ROLE_ADMIN')")
  */
-class CommunityController extends Controller
+class CommunityAdminController extends Controller
 {
     /**
      * Lists all Trick entities.

@@ -49,6 +49,11 @@ body#homepage header .navbar {
 body#homepage header .navbar .nav-link:hover {
   color: $st-red;
 }
+body#homepage .messages {
+  position: absolute;
+  top: 56px;
+  width: 100%;
+}
 body#homepage .jumbotron {
   background: url("/images/snowtricks-bg.jpg") center no-repeat;
   height: 100%;

@@ -27,7 +27,7 @@ class UserRegistrationForm extends AbstractType
                 'label_attr' => ['class' => 'sr-only'],
                 'attr' => ['placeholder' => 'Username']
             ])
-            ->add('password', RepeatedType::class, [
+            ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [
                     'label_attr' => ['class' => 'sr-only'],

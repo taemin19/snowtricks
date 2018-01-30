@@ -3,5 +3,5 @@ AppBundle\Entity\User:
         fullName: <firstName()> <lastName()>
         username: <username()>
         email: <email()>
-        password: user<current()>
+        plainPassword: user<current()>
         roles: [ROLE_ADMIN]

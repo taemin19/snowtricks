@@ -58,14 +58,22 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\GreaterThan(
-     *     value = 6,
-     *     message = "The password must be at least {{ compared_value }} characters long."
-     * )
+     * The encoded password
+     *
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * A non-persisted field that's used to create the encoded password.
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 6,
+     *      minMessage = "The password must be at least {{ limit }} characters long"
+     * )
+     */
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="json")
@@ -168,6 +176,28 @@ class User implements UserInterface
     }
 
     /**
+     * Set plainPassword
+     *
+     * @param $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+        // Avoids Doctrine *not* saving this entity, if only plainPassword changes
+        $this->password = null;
+    }
+
+    /**
+     * Get plainPassword
+     *
+     * @return string
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
      * Set roles.
      *
      * @param array $roles
@@ -204,6 +234,7 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
+        $this->plainPassword = null;
     }
 
     public function setAvatar(Avatar $avatar = null)

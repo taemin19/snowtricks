@@ -2,12 +2,16 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="st_user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @UniqueEntity(fields={"username"}, message="This username is already used.")
+ * @UniqueEntity(fields={"email"}, message="It looks like your already have an account!")
  */
 class User implements UserInterface
 {
@@ -19,27 +23,52 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "The full name must be at least {{ limit }} characters long"
+     * )
      * @ORM\Column(type="string")
      */
     private $fullName;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *      pattern="/^[a-z_]+$/",
+     *      message="The username must contain only lowercase characters and underscores."
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 10,
+     *      minMessage = "The username must be at least {{ limit }} characters long",
+     *      maxMessage = "The username cannot be longer than {{ limit }} characters"
+     * )
      * @ORM\Column(type="string", unique=true)
      */
     private $username;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Email(
+     *      message = "The email is not a valid email.",
+     * )
      * @ORM\Column(type="string", unique=true)
      */
     private $email;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\GreaterThan(
+     *     value = 6,
+     *     message = "The password must be at least {{ compared_value }} characters long."
+     * )
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="json")
      */
     private $roles = [];
 
@@ -155,7 +184,12 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return $this->roles;
+        $roles = $this->roles;
+        // guarantees that a user always has at least one role for security
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+        return array_unique($roles);
     }
 
     /**

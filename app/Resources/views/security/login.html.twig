@@ -13,7 +13,7 @@
 {% block body %}
     <div class="container text-center py-4">
         <div class="row">
-            <form class="form-signin" action="{{ path('login') }}" method="post">
+            <form class="form-login" action="{{ path('login') }}" method="post">
                 <a href="{{ path('homepage') }}">
                     <img class="rounded mb-4" src="{{ asset('logo/st-logo-m.png') }}" alt="SnowTricks Logo">
                 </a>
@@ -43,7 +43,7 @@
                 <button class="btn btn-lg btn-primary btn-block my-3" type="submit">Sign In</button>
 
                 <div class="d-flex flex-column mb-3">
-                    <a class="text-muted mb-3" href="#">No account yet? Sign Up</a>
+                    <a class="text-muted mb-3" href="{{ path('user_register') }}">No account yet? Sign Up!</a>
                     <a class="text-muted" href="#">Forgot Password?</a>
                 </div>
                 <div class="text-left mt-2">

@@ -1,6 +1,6 @@
 security:
     encoders:
-        AppBundle\Entity\User: plaintext
+        AppBundle\Entity\User: bcrypt
 
     providers:
         database_users:

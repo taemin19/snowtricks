@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid bg-white mb-0">
+        <div class="container d-flex">
+            <div class="avatar">
+                <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-circle-o fa-5x text-dark" aria-hidden="true"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <form class="px-4 pb-3">
+                        <h4 class="dropdown-header">Edit avatar</h4>
+                        <div class="dropdown-divider"></div>
+                    </form>
+                </div>
+            </div>
+            <div id="profile" class="align-self-center">
+                <div class="profile-info">
+                    <div id="collapseOne" class="collapse {{ showInfo }}" aria-labelledby="headingOne" data-parent="#profile">
+                        <h4 class="font-weight-bold">{{ user.fullName }}</h4>
+                        <a class="btn btn-success btn-sm text-white collapsed" role="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i class="fa fa-pencil pr-2" aria-hidden="true"></i>Edit my profile
+                        </a>
+                    </div>
+                </div>
+                <div class="profile-edit">
+                    <div id="collapseTwo" class="collapse {{ showForm }}" aria-labelledby="headingTwo" data-parent="#profile">
+                        {{ form_start(form) }}
+                        <h4 class="dropdown-header">Edit profile</h4>
+                        <div class="dropdown-divider"></div>
+                        {{ form_row(form.fullName) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.username) }}
+                        <button type="submit" class="btn btn-success btn-sm" formnovalidate>Update</button>
+                        <a class="btn btn-secondary btn-sm" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Cancel
+                        </a>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <div class="navbar-nav flex-row">
+                <a class="nav-link active px-2" href="{{ path('admin_profile_show', {'username': app.user.username}) }}"><i class="fa fa-user pr-2" aria-hidden="true"></i>My Profile</a>
+                <a class="nav-link px-2" href="#"><i class="fa fa-snowflake-o pr-2" aria-hidden="true"></i>My Tricks</a>
+            </div>
+        </div>
+    </nav>
+
+    {% block profile_body %}{% endblock%}
+{% endblock %}

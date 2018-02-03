@@ -9,3 +9,13 @@ services:
         autowire: true
         tags:
             - { name: doctrine.event_subscriber }
+
+    app.doctrine.file_upload_listener:
+        class: AppBundle\Doctrine\FileUploadListener
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    AppBundle\Service\FileUploader:
+        arguments:
+            $targetDir: '%uploads_directory%'

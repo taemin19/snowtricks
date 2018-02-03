@@ -19,11 +19,6 @@ class Comment
     private $id;
 
     /**
-     * @ORM\Column(name="author", type="string", length=255)
-     */
-    private $author;
-
-    /**
      * @ORM\Column(name="message", type="text")
      */
     private $message;
@@ -41,6 +36,14 @@ class Comment
     private $trick;
 
     /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
      * Get id.
      *
      * @return int
@@ -48,26 +51,6 @@ class Comment
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set author.
-     *
-     * @param string $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author.
-     *
-     * @return string
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**
@@ -113,9 +96,9 @@ class Comment
     /**
      * Set trick.
      *
-     * @param \AppBundle\Entity\Trick $trick
+     * @param Trick $trick
      */
-    public function setTrick(\AppBundle\Entity\Trick $trick)
+    public function setTrick(Trick $trick)
     {
         $this->trick = $trick;
     }
@@ -123,10 +106,30 @@ class Comment
     /**
      * Get trick.
      *
-     * @return \AppBundle\Entity\Trick
+     * @return Trick
      */
     public function getTrick()
     {
         return $this->trick;
+    }
+
+    /**
+     * Set author.
+     *
+     * @param User $author
+     */
+    public function setAuthor(User $author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Get author.
+     *
+     * @return User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

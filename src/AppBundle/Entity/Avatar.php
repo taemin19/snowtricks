@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -26,6 +28,13 @@ class Avatar
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $filePath;
+
+    /**
+     * @Assert\Image()
+     */
+    private $file;
+
+    private $tempPath;
 
     /**
      * Get id.
@@ -76,4 +85,38 @@ class Avatar
     {
         return $this->filePath;
     }
+
+    /**
+     * Set file
+     *
+     * @param UploadedFile|null $file
+     */
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+
+        if ($this->filePath !== null) {
+            $this->tempPath = $this->filePath;
+
+            $this->filePath = null;
+            $this->alt = null;
+        }
+    }
+
+    /**
+     * Get file
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Get tempPath
+     */
+    public function getTempPath()
+    {
+        return $this->tempPath;
+    }
 }
+

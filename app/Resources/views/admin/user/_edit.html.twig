@@ -2,7 +2,7 @@
     <div class="avatar">
         <div class="nav-link">
             {% if user.avatar is not null %}
-                <img src="{{ asset('uploads/images/avatars/' ~ user.avatar.filePath) }}" alt="{{ user.avatar.alt }}" class="rounded img-fluid">
+                <img src="{{ asset('uploads/images/' ~ user.avatar.filePath) }}" alt="{{ user.avatar.alt }}" class="rounded img-fluid">
             {% else %}
                 <i class="fa fa-user-circle-o fa-5x text-dark" aria-hidden="true"></i>
             {% endif %}

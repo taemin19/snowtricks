@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @UniqueEntity(fields={"username"}, message="This username is already used.")
  * @UniqueEntity(fields={"email"}, message="It looks like your already have an account!")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id
@@ -82,6 +82,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Avatar", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $avatar;
 
@@ -245,5 +246,28 @@ class User implements UserInterface
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize(): string
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+        ));
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            ) = unserialize($serialized);
     }
 }

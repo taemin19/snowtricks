@@ -21,7 +21,9 @@ class UserEditForm extends AbstractType
             ])
             ->add('username', null, [
                 'attr' => ['placeholder' => 'Username']
-            ]);
+            ])
+            ->add('avatar', AvatarForm::class)
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

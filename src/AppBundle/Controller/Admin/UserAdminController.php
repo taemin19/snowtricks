@@ -40,7 +40,7 @@ class UserAdminController extends Controller
         $form = $this->createForm(UserEditForm::class, $user);
 
         $form->handleRequest($request);
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
 
             $em = $this->getDoctrine()->getManager();

@@ -87,6 +87,13 @@ body#login .form-login, body#register .form-register {
   margin: 0 auto;
 }
 
+/* Page: 'User profile'
+   ------------------------------------------------------------------------- */
+body#admin_profile_show .avatar img {
+  width: 80px;
+  height: 80px;
+}
+
 /* Responsive
    ------------------------------------------------------------------------- */
 @include media-breakpoint-up(sm) {

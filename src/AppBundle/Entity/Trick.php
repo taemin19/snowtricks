@@ -21,11 +21,6 @@ class Trick
     private $id;
 
     /**
-     * @ORM\Column(name="author", type="string", length=255)
-     */
-    private $author;
-
-    /**
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -64,25 +59,52 @@ class Trick
     private $slug;
 
     /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
+     * @var Category[]|ArrayCollection
+     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", cascade={"persist"})
      * @ORM\JoinTable(name="st_trick_category")
      */
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="trick")
+     * @var Image[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Video", mappedBy="trick")
+     * @var Video[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Video", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $videos;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="trick")
+     * @var Comment[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $comments;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->videos = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -92,26 +114,6 @@ class Trick
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set author.
-     *
-     * @param string $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author.
-     *
-     * @return string
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**
@@ -255,13 +257,23 @@ class Trick
     }
 
     /**
-     * Constructor
+     * Set author.
+     *
+     * @param User $author
      */
-    public function __construct()
+    public function setAuthor(User $author)
     {
-        $this->categories = new ArrayCollection();
-        $this->images = new ArrayCollection();
-        $this->videos = new ArrayCollection();
+        $this->author = $author;
+    }
+
+    /**
+     * Get author.
+     *
+     * @return User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     /**

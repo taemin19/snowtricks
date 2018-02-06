@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="bg-white rounded mt-4 mb-md-4 p-4">
+                    {% block community_body %}{% endblock %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-white rounded my-4 p-4">
+                    {% block aside %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

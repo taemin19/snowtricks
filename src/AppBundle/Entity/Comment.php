@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,6 +20,8 @@ class Comment
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 255)
      * @ORM\Column(name="message", type="text")
      */
     private $message;

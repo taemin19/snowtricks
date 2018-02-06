@@ -6,6 +6,7 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Trick;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -37,6 +38,18 @@ Land, absorbing the impact with your legs.',
                 'class' => Category::class,
                 'label_attr' => ['class' => 'sr-only'],
                 'choice_label' => 'name'
+            ])
+            ->add('images', CollectionType::class, [
+                'entry_type'   => ImageForm::class,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'label_attr' => ['class' => 'sr-only']
+            ])
+            ->add('videos', CollectionType::class, [
+                'entry_type'   => VideoForm::class,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'label_attr' => ['class' => 'sr-only']
             ])
         ;
     }

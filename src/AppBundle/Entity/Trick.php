@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,16 +22,19 @@ class Trick
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -279,17 +283,26 @@ class Trick
     /**
      * Add category.
      *
-     * @param \AppBundle\Entity\Category $category
+     * @param $category
      */
-    public function addCategory(Category $category)
+    public function setCategories($category)
     {
-        $this->categories[] = $category;
+        // with a non multiple select field
+        $this->categories->add($category);
+
+        /* with a multiple select field
+         * foreach ($categories as $category) {
+         *  if (!$this->categories->contains($category)) {
+         *      $this->categories->add($category);
+         *  }
+         * }
+         */
     }
 
     /**
      * Remove category.
      *
-     * @param \AppBundle\Entity\Category $category
+     * @param Category $category
      */
     public function removeCategory(Category $category)
     {
@@ -299,7 +312,7 @@ class Trick
     /**
      * Get categories.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getCategories()
     {
@@ -321,7 +334,7 @@ class Trick
     /**
      * Remove image.
      *
-     * @param \AppBundle\Entity\Image $image
+     * @param Image $image
      */
     public function removeImage(Image $image)
     {
@@ -331,7 +344,7 @@ class Trick
     /**
      * Get images.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getImages()
     {
@@ -341,7 +354,7 @@ class Trick
     /**
      * Add video.
      *
-     * @param \AppBundle\Entity\Video $video
+     * @param Video $video
      */
     public function addVideo(Video $video)
     {
@@ -353,7 +366,7 @@ class Trick
     /**
      * Remove video.
      *
-     * @param \AppBundle\Entity\Video $video
+     * @param Video $video
      */
     public function removeVideo(Video $video)
     {
@@ -363,7 +376,7 @@ class Trick
     /**
      * Get videos.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getVideos()
     {
@@ -373,7 +386,7 @@ class Trick
     /**
      * Add comment.
      *
-     * @param \AppBundle\Entity\Comment $comment
+     * @param Comment $comment
      */
     public function addComment(Comment $comment)
     {
@@ -385,7 +398,7 @@ class Trick
     /**
      * Remove comment.
      *
-     * @param \AppBundle\Entity\Comment $comment
+     * @param Comment $comment
      */
     public function removeComment(Comment $comment)
     {
@@ -395,7 +408,7 @@ class Trick
     /**
      * Get comments.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getComments()
     {

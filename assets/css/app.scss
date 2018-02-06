@@ -66,7 +66,8 @@ body#homepage .jumbotron h1 {
 
 /* Page: 'Community trick show'
    ------------------------------------------------------------------------- */
-body#trick_show {
+body#trick_show,
+body#admin_trick_index, body#admin_trick_new, body#admin_trick_edit {
   background-color: $st-gray;
 }
 

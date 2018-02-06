@@ -1,0 +1,42 @@
+{% extends 'admin/community/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Add Trick
+{% endblock %}
+
+{% block body_id 'admin_trick_new' %}
+
+{% block aside %}
+    <p class="text-muted font-weight-bold">My Latest Tricks</p>
+    {{ render(controller('AppBundle:Admin\\CommunityAdmin:menu')) }}
+{% endblock %}
+
+{% block community_body %}
+    <div class="trick-info pb-3">
+        {{ form_start(form) }}
+        <h3 class="font-weight-bold">Title</h3>
+        {{ form_row(form.title) }}
+        <p class="text-uppercase"><span class="badge badge-pill badge-info">Category</span></p>
+        {{ form_row(form.categories) }}
+        <h4>Description</h4>
+        {{ form_row(form.description) }}
+        <h4>How to do it</h4>
+        {{ form_row(form.content) }}
+        <hr>
+        <div class="form-group">
+            {{ form_label(form.images) }}
+            {{ form_widget(form.images) }}
+            {{ form_errors(form.images) }}
+            <a href="#" id="add_image" class="btn btn-sm btn-info" role="button">Add Image</a>
+        </div>
+        <hr>
+        <div class="form-group">
+            {{ form_label(form.videos) }}
+            {{ form_widget(form.videos) }}
+            {{ form_errors(form.videos) }}
+            <a href="#" id="add_video" class="btn btn-sm btn-outline-info" role="button">Add Video</a>
+        </div>
+        <button type="submit" class="btn btn-success btn-block" formnovalidate>Save</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

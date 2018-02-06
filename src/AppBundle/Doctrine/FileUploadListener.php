@@ -2,6 +2,7 @@
 
 namespace AppBundle\Doctrine;
 
+use AppBundle\Entity\Image;
 use Doctrine\Common\EventSubscriber;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -53,7 +54,7 @@ class FileUploadListener implements EventSubscriber
     private function uploadFile($entity)
     {
         // upload only works for Avatar entities
-        if (!$entity instanceof Avatar) {
+        if (!$entity instanceof Avatar && !$entity instanceof Image) {
             return;
         }
 
@@ -70,7 +71,7 @@ class FileUploadListener implements EventSubscriber
 
     private function removeOldFile($entity)
     {
-        if (!$entity instanceof Avatar) {
+        if (!$entity instanceof Avatar && !$entity instanceof Image) {
             return;
         }
 

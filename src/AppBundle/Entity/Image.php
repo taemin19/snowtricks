@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -26,6 +28,13 @@ class Image
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $filePath;
+
+    /**
+     * @Assert\Image()
+     */
+    private $file;
+
+    private $tempPath;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trick", inversedBy="images")
@@ -84,11 +93,44 @@ class Image
     }
 
     /**
+     * Set file
+     *
+     * @param UploadedFile|null $file
+     */
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+
+        if ($this->filePath !== null) {
+            $this->tempPath = $this->filePath;
+
+            $this->filePath = null;
+            $this->alt = null;
+        }
+    }
+
+    /**
+     * Get file
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Get tempPath
+     */
+    public function getTempPath()
+    {
+        return $this->tempPath;
+    }
+
+    /**
      * Set trick.
      *
-     * @param \AppBundle\Entity\Trick $trick
+     * @param Trick $trick
      */
-    public function setTrick(\AppBundle\Entity\Trick $trick)
+    public function setTrick(Trick $trick)
     {
         $this->trick = $trick;
     }

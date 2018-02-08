@@ -85,8 +85,10 @@ class CommunityAdminController extends Controller
      * @Route("/{id}/edit", requirements={"id": "\d+"}, name="admin_trick_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction()
+    public function editAction(Request $request, Trick $trick)
     {
+        $this->denyAccessUnlessGranted('edit', $trick, 'Tricks can only be edited by their authors.');
+
         return new Response('<html><body>Admin edit!</body></html>');
     }
 
@@ -98,6 +100,10 @@ class CommunityAdminController extends Controller
      */
     public function deleteAction(Request $request, Trick $trick)
     {
+        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+            return $this->redirectToRoute('admin_trick_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($trick);
         $em->flush();

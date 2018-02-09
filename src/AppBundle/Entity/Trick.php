@@ -95,7 +95,7 @@ class Trick
     /**
      * @var Image[]|ArrayCollection
      *
-     * @Assert\NotBlank()
+     * @Assert\Valid()
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $images;
@@ -103,7 +103,6 @@ class Trick
     /**
      * @var Video[]|ArrayCollection
      *
-     * @Assert\Type(type="AppBundle\Entity\Video")
      * @Assert\Valid()
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Video", mappedBy="trick", cascade={"persist", "remove"})
      */

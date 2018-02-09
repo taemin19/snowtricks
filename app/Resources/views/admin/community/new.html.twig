@@ -1,0 +1,56 @@
+{% extends 'admin/community/layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/form.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Add Trick
+{% endblock %}
+
+{% block body_id 'admin_trick_new' %}
+
+{% block aside %}
+    <p class="text-muted font-weight-bold">My Latest Tricks</p>
+    {{ render(controller('AppBundle:Admin\\CommunityAdmin:menu')) }}
+{% endblock %}
+
+{% block community_body %}
+    <div class="trick-info">
+        <h2>Add a new trick</h2>
+        <p class="text-danger pb-3">* required fields.</p>
+
+        {{ form_start(form) }}
+            <h4>Title<span class="asterisk text-danger"> *</span></h4>
+                {{ form_row(form.title) }}
+
+            <p class="text-uppercase"><span class="badge badge-pill badge-info">Category</span><span class="asterisk text-danger"> *</span></p>
+                {{ form_row(form.categories) }}
+
+            <h4>Description<span class=" asterisk text-danger"> *</span></h4>
+                {{ form_row(form.description) }}
+
+            <h4>How to do it<span class="asterisk text-danger"> *</span></h4>
+                {{ form_row(form.content) }}
+
+            <div class="form-media py-2">
+                <h4>Image</h4>
+                <ul class="images list-unstyled" data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
+                    {% for image in form.images %}
+                        <li>{{ form_row(image.file) }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h4>Video</h4>
+                <ul class="videos list-unstyled" data-prototype="{{ form_widget(form.videos.vars.prototype)|e('html_attr') }}">
+                    {% for video in form.videos %}
+                        <li>{{ form_row(video.filePath) }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block" formnovalidate>Save</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

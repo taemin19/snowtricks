@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,21 +22,33 @@ class Trick
     private $id;
 
     /**
-     * @ORM\Column(name="author", type="string", length=255)
-     */
-    private $author;
-
-    /**
-     * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "The title must be at least {{ limit }} characters long"
+     * )
+     * @ORM\Column(name="title", type="string")
      */
     private $title;
 
     /**
-     * @ORM\Column(name="description", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "The description must be at least {{ limit }} characters long",
+     *      maxMessage = "The description cannot be longer than {{ limit }} characters"
+     * )
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "The content must be at least {{ limit }} characters long"
+     * )
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -64,25 +77,55 @@ class Trick
     private $slug;
 
     /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
+     * @var Category[]|ArrayCollection
+     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", cascade={"persist"})
      * @ORM\JoinTable(name="st_trick_category")
      */
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="trick")
+     * @var Image[]|ArrayCollection
+     *
+     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Video", mappedBy="trick")
+     * @var Video[]|ArrayCollection
+     *
+     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Video", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $videos;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="trick")
+     * @var Comment[]|ArrayCollection
+     *
+     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $comments;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->videos = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -92,26 +135,6 @@ class Trick
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set author.
-     *
-     * @param string $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author.
-     *
-     * @return string
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**
@@ -255,29 +278,48 @@ class Trick
     }
 
     /**
-     * Constructor
+     * Set author.
+     *
+     * @param User $author
      */
-    public function __construct()
+    public function setAuthor(User $author)
     {
-        $this->categories = new ArrayCollection();
-        $this->images = new ArrayCollection();
-        $this->videos = new ArrayCollection();
+        $this->author = $author;
+    }
+
+    /**
+     * Get author.
+     *
+     * @return User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     /**
      * Add category.
      *
-     * @param \AppBundle\Entity\Category $category
+     * @param $category
      */
-    public function addCategory(Category $category)
+    public function setCategories($category)
     {
-        $this->categories[] = $category;
+        // with a non multiple select field
+        $this->categories->add($category);
+
+        /* with a multiple select field
+         * foreach ($categories as $category) {
+         *  if (!$this->categories->contains($category)) {
+         *      $this->categories->add($category);
+         *  }
+         * }
+         */
     }
 
     /**
      * Remove category.
      *
-     * @param \AppBundle\Entity\Category $category
+     * @param Category $category
      */
     public function removeCategory(Category $category)
     {
@@ -287,7 +329,7 @@ class Trick
     /**
      * Get categories.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getCategories()
     {
@@ -309,7 +351,7 @@ class Trick
     /**
      * Remove image.
      *
-     * @param \AppBundle\Entity\Image $image
+     * @param Image $image
      */
     public function removeImage(Image $image)
     {
@@ -319,7 +361,7 @@ class Trick
     /**
      * Get images.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getImages()
     {
@@ -329,7 +371,7 @@ class Trick
     /**
      * Add video.
      *
-     * @param \AppBundle\Entity\Video $video
+     * @param Video $video
      */
     public function addVideo(Video $video)
     {
@@ -341,7 +383,7 @@ class Trick
     /**
      * Remove video.
      *
-     * @param \AppBundle\Entity\Video $video
+     * @param Video $video
      */
     public function removeVideo(Video $video)
     {
@@ -351,7 +393,7 @@ class Trick
     /**
      * Get videos.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getVideos()
     {
@@ -361,7 +403,7 @@ class Trick
     /**
      * Add comment.
      *
-     * @param \AppBundle\Entity\Comment $comment
+     * @param Comment $comment
      */
     public function addComment(Comment $comment)
     {
@@ -373,7 +415,7 @@ class Trick
     /**
      * Remove comment.
      *
-     * @param \AppBundle\Entity\Comment $comment
+     * @param Comment $comment
      */
     public function removeComment(Comment $comment)
     {
@@ -383,7 +425,7 @@ class Trick
     /**
      * Get comments.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getComments()
     {

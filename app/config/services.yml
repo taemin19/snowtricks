@@ -16,6 +16,12 @@ services:
         tags:
             - { name: doctrine.event_subscriber }
 
+    trick_voter:
+        class: AppBundle\Security\TrickVoter
+        autowire: true
+        tags:
+            - { name: security.voter }
+
     AppBundle\Service\FileUploader:
         arguments:
             $targetDir: '%uploads_directory%'

@@ -10,7 +10,7 @@ AppBundle\Entity\Category:
 
 AppBundle\Entity\Trick:
     skating:
-        author: Author
+        author: '@user_1'
         title: Skating
         description: >
                      Don’t rush up the slope just yet. Lock your leading foot into it’s binding, while keeping the back foot free.
@@ -21,7 +21,7 @@ AppBundle\Entity\Trick:
                  It’s a very useful exercise, as this is how you’ll be going onto the lift and exiting it. Also, it’s a great way to quickly cover flat surfaces.
         categories: ['@basic']
     heel_slide:
-        author: Author
+        author: '@user_2'
         title: Heel Slide
         description: >
                      The first thing you need to learn on the slope is how to control the heel edge.
@@ -32,19 +32,19 @@ AppBundle\Entity\Trick:
                  Now let’s try riding down in the same fashion, but this time shifting your weight onto one foot. The foot you shift onto will determine the direction of movement. Then try the other foot. Your trajectory will look similar to a falling leaf.
         categories: ['@basic']
     nose:
-        author: Author
+        author: '@user_3'
         title: Nose
         description: Front hand grabs the nose of the board.
         content: Front hand grabs the nose of the board.
         categories: ['@grab']
     japan:
-        author: Author
+        author: '@user_4'
         title: Japan
         description: The front hand grabs the toe edge. The knees are bent and the nose of the board is pulled up behind your head.
         content: The front hand grabs the toe edge. The knees are bent and the nose of the board is pulled up behind your head.
         categories: ['@grab']
     air:
-        author: Author
+        author: '@user_5'
         title: Air
         description: A front jump, one of the basics.
         content: |
@@ -53,7 +53,7 @@ AppBundle\Entity\Trick:
                  Land, absorbing the impact with your legs.
         categories: ['@jump_spin']
     ollie:
-        author: Author
+        author: '@user_6'
         title: Ollie
         description: >
                      The ollie is the basis of all jumps and tricks, the same way the bunny hop is on the bike.
@@ -64,7 +64,7 @@ AppBundle\Entity\Trick:
                  Land on the entire surface of the board, knees slightly bent, crouching down on impact.
         categories: ['@jump_spin']
     bs_50_50:
-        author: Author
+        author: '@user_7'
         title: BS 50-50
         description: Riding straight over a box or rail with your weight centred over the board. Approach from heel edge.
         content: |
@@ -73,7 +73,7 @@ AppBundle\Entity\Trick:
                  If you've jumped onto the obstacle correctly, then catching and holding your balance shouldn't be much of a problem, so once you feel confident with your 50‑50 entry, you can move on to various 180, 360 and 540 exits.
         categories: ['@slide']
     bs_noseslide:
-        author: Author
+        author: '@user_8'
         title: BS Noseslide
         description: A fairly simple trick where the trickiest part is positioning the board perpendicular to the rail.
         content: |
@@ -85,43 +85,43 @@ AppBundle\Entity\Trick:
 AppBundle\Entity\Image:
     skating_image-1:
         alt: Skating
-        filePath: skating-1.jpeg
+        filePath: skating-1.jpg
         trick: "@skating"
     heel_slide_image-1:
         alt: Heel Slide
-        filePath: heel_slide-1.jpeg
+        filePath: heel_slide-1.jpg
         trick: "@heel_slide"
     nose_image-1:
         alt: Nose
-        filePath: nose-1.jpeg
+        filePath: nose-1.jpg
         trick: "@nose"
     japan_image-1:
         alt: Japan
-        filePath: japan-1.jpeg
+        filePath: japan-1.jpg
         trick: "@japan"
     air_image-1:
         alt: Air
-        filePath: air-1.jpeg
+        filePath: air-1.jpg
         trick: "@air"
     ollie_image-1:
         alt: Ollie
-        filePath: ollie-1.jpeg
+        filePath: ollie-1.jpg
         trick: "@ollie"
     bs_50_50_image-1:
         alt: BS 50-50
-        filePath: bs_5050-1.jpeg
+        filePath: bs_5050-1.jpg
         trick: "@bs_50_50"
     bs_noseslide_image-1:
         alt: BS Noseslide
-        filePath: bs_noseslide-1.jpeg
+        filePath: bs_noseslide-1.jpg
         trick: "@bs_noseslide"
     bs_noseslide_image-2:
         alt: BS Noseslide
-        filePath: bs_noseslide-1.jpeg
+        filePath: bs_noseslide-1.jpg
         trick: "@bs_noseslide"
     bs_noseslide_image-3:
         alt: BS Noseslide
-        filePath: bs_noseslide-1.jpeg
+        filePath: bs_noseslide-1.jpg
         trick: "@bs_noseslide"
 
 AppBundle\Entity\Video:
@@ -159,40 +159,40 @@ AppBundle\Entity\Video:
 AppBundle\Entity\Comment:
     skating_comment-1:
         trick: "@skating"
-        author: Author
+        author: '@user_8'
         message: This is a very good beginner lesson, I wish I had watched this before my first day.
     heel_slide_comment-1:
         trick: "@heel_slide"
-        author: Author
+        author: '@user_7'
         message: Nice tips, awesome quality videos!! Thanks for advices ;)
     nose_comment-1:
         trick: "@nose"
-        author: Author
+        author: '@user_6'
         message: so excited to try these out for this season!!
     japan_comment-1:
         trick: "@japan"
-        author: Author
+        author: '@user_5'
         message: you make everything look too easy﻿!
     air_comment-1:
         trick: "@air"
-        author: Author
+        author: '@user_4'
         message: you make everything look too easy﻿!
     ollie_comment-1:
         trick: "@ollie"
-        author: Author
+        author: '@user_3'
         message: Is it better to learn Ollie while being still or moving?
     bs_noseslide_comment-1:
         trick: "@bs_noseslide"
-        author: Author
+        author: '@user_7'
         message: I can never land them how do you jump onto the rail and keep balance?
     bs_noseslide_comment-2:
         trick: "@bs_noseslide"
-        author: Author
+        author: '@user_1'
         message: >
                  When you jump on to the rail you want to come from the side of the rail not straight on but still parallel to it.
                  To land on the rail angle your toes up so that your board can catch on the rail.
                  This should keep you stable and help you balance on the rail.
     bs_noseslide_comment-3:
         trick: "@bs_noseslide"
-        author: Author
+        author: '@user_7'
         message: Thanks you guys!

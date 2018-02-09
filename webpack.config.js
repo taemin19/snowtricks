@@ -16,6 +16,7 @@ Encore
 
     // define the assets of the project
     .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/form', './assets/js/form.js')
     .addStyleEntry('css/app', './assets/css/app.scss')
 
     // allow sass/scss files to be processed

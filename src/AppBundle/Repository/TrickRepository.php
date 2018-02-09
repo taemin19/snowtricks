@@ -28,6 +28,29 @@ class TrickRepository extends EntityRepository
         return new Paginator($qb, true);
     }
 
+    public function getLatestByAuthor(int $page, int $limit, bool $published, $author)
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->where('t.author = :author')
+            ->setParameter('author', $author)
+            ->andWhere('t.published = :published')
+            ->setParameter('published', $published)
+            ->leftJoin('t.categories', 'c')
+            ->addSelect('c')
+            ->leftJoin('t.images', 'i')
+            ->addSelect('i')
+            ->orderBy('t.createAt', 'DESC')
+            ->getQuery()
+        ;
+
+        $qb
+            ->setFirstResult(($page-1) * $limit)
+            ->setMaxResults($limit)
+        ;
+
+        return new Paginator($qb, true);
+    }
+
     public function getLatestWithCategory(int $limit)
     {
         $qb = $this->createQueryBuilder('t')

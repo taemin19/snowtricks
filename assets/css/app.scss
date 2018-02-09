@@ -36,6 +36,9 @@ footer .social-link .fa {
 .card-img-top {
   height: 250px;
 }
+.asterisk {
+  font-size: 1.5rem;
+}
 
 /* Page: 'Home'
    ------------------------------------------------------------------------- */
@@ -66,7 +69,8 @@ body#homepage .jumbotron h1 {
 
 /* Page: 'Community trick show'
    ------------------------------------------------------------------------- */
-body#trick_show {
+body#trick_show,
+body#admin_trick_index, body#admin_trick_new, body#admin_trick_edit {
   background-color: $st-gray;
 }
 

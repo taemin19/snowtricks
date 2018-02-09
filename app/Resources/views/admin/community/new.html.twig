@@ -1,5 +1,10 @@
 {% extends 'admin/community/layout.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/form.js') }}"></script>
+{% endblock %}
+
 {% block title %}
     {{ parent() }} - Add Trick
 {% endblock %}
@@ -12,31 +17,40 @@
 {% endblock %}
 
 {% block community_body %}
-    <div class="trick-info pb-3">
+    <div class="trick-info">
+        <h2>Add a new trick</h2>
+        <p class="text-danger pb-3">* required fields.</p>
+
         {{ form_start(form) }}
-        <h3 class="font-weight-bold">Title</h3>
-        {{ form_row(form.title) }}
-        <p class="text-uppercase"><span class="badge badge-pill badge-info">Category</span></p>
-        {{ form_row(form.categories) }}
-        <h4>Description</h4>
-        {{ form_row(form.description) }}
-        <h4>How to do it</h4>
-        {{ form_row(form.content) }}
-        <hr>
-        <div class="form-group">
-            {{ form_label(form.images) }}
-            {{ form_widget(form.images) }}
-            {{ form_errors(form.images) }}
-            <a href="#" id="add_image" class="btn btn-sm btn-info" role="button">Add Image</a>
-        </div>
-        <hr>
-        <div class="form-group">
-            {{ form_label(form.videos) }}
-            {{ form_widget(form.videos) }}
-            {{ form_errors(form.videos) }}
-            <a href="#" id="add_video" class="btn btn-sm btn-outline-info" role="button">Add Video</a>
-        </div>
-        <button type="submit" class="btn btn-success btn-block" formnovalidate>Save</button>
+            <h4>Title<span class="asterisk text-danger"> *</span></h4>
+                {{ form_row(form.title) }}
+
+            <p class="text-uppercase"><span class="badge badge-pill badge-info">Category</span><span class="asterisk text-danger"> *</span></p>
+                {{ form_row(form.categories) }}
+
+            <h4>Description<span class=" asterisk text-danger"> *</span></h4>
+                {{ form_row(form.description) }}
+
+            <h4>How to do it<span class="asterisk text-danger"> *</span></h4>
+                {{ form_row(form.content) }}
+
+            <div class="form-media py-2">
+                <h4>Image</h4>
+                <ul class="images list-unstyled" data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
+                    {% for image in form.images %}
+                        <li>{{ form_row(image.file) }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h4>Video</h4>
+                <ul class="videos list-unstyled" data-prototype="{{ form_widget(form.videos.vars.prototype)|e('html_attr') }}">
+                    {% for video in form.videos %}
+                        <li>{{ form_row(video.filePath) }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block" formnovalidate>Save</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}

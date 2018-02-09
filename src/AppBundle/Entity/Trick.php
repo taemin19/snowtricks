@@ -23,18 +23,32 @@ class Trick
 
     /**
      * @Assert\NotBlank()
-     * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "The title must be at least {{ limit }} characters long"
+     * )
+     * @ORM\Column(name="title", type="string")
      */
     private $title;
 
     /**
      * @Assert\NotBlank()
-     * @ORM\Column(name="description", type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "The description must be at least {{ limit }} characters long",
+     *      maxMessage = "The description cannot be longer than {{ limit }} characters"
+     * )
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
      * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "The content must be at least {{ limit }} characters long"
+     * )
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -81,6 +95,7 @@ class Trick
     /**
      * @var Image[]|ArrayCollection
      *
+     * @Assert\NotBlank()
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $images;
@@ -88,6 +103,8 @@ class Trick
     /**
      * @var Video[]|ArrayCollection
      *
+     * @Assert\Type(type="AppBundle\Entity\Video")
+     * @Assert\Valid()
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Video", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $videos;
@@ -95,6 +112,7 @@ class Trick
     /**
      * @var Comment[]|ArrayCollection
      *
+     * @Assert\Valid()
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="trick", cascade={"persist", "remove"})
      */
     private $comments;

@@ -14,7 +14,7 @@ class ImageForm extends AbstractType
     {
         $builder
             ->add('file', FileType::class, [
-                'label_attr' => ['class' => 'sr-only'],
+                'label' => 'Image file'
             ]);
     }
 

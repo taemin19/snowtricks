@@ -20,9 +20,12 @@ class TrickForm extends AbstractType
                 'label_attr' => ['class' => 'sr-only'],
                 'attr' => ['placeholder' => 'e.g. Air']
             ])
-            ->add('description', null, [
+            ->add('description', TextareaType::class, [
                 'label_attr' => ['class' => 'sr-only'],
-                'attr' => ['placeholder' => 'e.g. A front jump, one of the basics.']
+                'attr' => [
+                    'placeholder' => 'e.g. A front jump, one of the basics.',
+                    'rows' => '3'
+                ]
             ])
             ->add('content', TextareaType::class, [
                 'label_attr' => ['class' => 'sr-only'],
@@ -31,8 +34,8 @@ class TrickForm extends AbstractType
 Before the jump, crouch down a little more and prepare for the launch.
 Pop off the jump with your back leg. Once you’re in the air, relax and watch your landing spot.
 Land, absorbing the impact with your legs.',
-                        'rows' => '5'
-                    ]
+                        'rows' => '10'
+                ]
             ])
             ->add('categories', EntityType::class, [
                 'class' => Category::class,
@@ -41,15 +44,19 @@ Land, absorbing the impact with your legs.',
             ])
             ->add('images', CollectionType::class, [
                 'entry_type'   => ImageForm::class,
+                'entry_options' => ['label' => false],
                 'allow_add'    => true,
                 'allow_delete' => true,
-                'label_attr' => ['class' => 'sr-only']
+                'by_reference' => false,
+                'required' => false
             ])
             ->add('videos', CollectionType::class, [
                 'entry_type'   => VideoForm::class,
+                'entry_options' => ['label' => false],
                 'allow_add'    => true,
                 'allow_delete' => true,
-                'label_attr' => ['class' => 'sr-only']
+                'by_reference' => false,
+                'required' => false,
             ])
         ;
     }

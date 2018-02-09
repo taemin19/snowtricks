@@ -44,6 +44,7 @@ Land, absorbing the impact with your legs.',
             ])
             ->add('images', CollectionType::class, [
                 'entry_type'   => ImageForm::class,
+                'label_attr' => ['class' => 'sr-only'],
                 'entry_options' => ['label' => false],
                 'allow_add'    => true,
                 'allow_delete' => true,
@@ -52,6 +53,7 @@ Land, absorbing the impact with your legs.',
             ])
             ->add('videos', CollectionType::class, [
                 'entry_type'   => VideoForm::class,
+                'label_attr' => ['class' => 'sr-only'],
                 'entry_options' => ['label' => false],
                 'allow_add'    => true,
                 'allow_delete' => true,

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -18,6 +19,7 @@ class Video
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $filePath;
@@ -61,9 +63,9 @@ class Video
     /**
      * Set trick.
      *
-     * @param \AppBundle\Entity\Trick $trick
+     * @param Trick $trick
      */
-    public function setTrick(\AppBundle\Entity\Trick $trick)
+    public function setTrick(Trick $trick)
     {
         $this->trick = $trick;
     }
@@ -71,7 +73,7 @@ class Video
     /**
      * Get trick.
      *
-     * @return \AppBundle\Entity\Trick
+     * @return Trick
      */
     public function getTrick()
     {

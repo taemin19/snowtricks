@@ -304,16 +304,13 @@ class Trick
      */
     public function setCategories($category)
     {
-        // with a non multiple select field
-        $this->categories->add($category);
-
-        /* with a multiple select field
-         * foreach ($categories as $category) {
-         *  if (!$this->categories->contains($category)) {
-         *      $this->categories->add($category);
-         *  }
-         * }
-         */
+        if (!$this->categories->contains($category)) {
+            // limits a trick to have only one category
+            if ($this->categories->count() > 0) {
+                $this->categories->clear();
+            }
+            $this->categories->add($category);
+        }
     }
 
     /**
@@ -339,13 +336,14 @@ class Trick
     /**
      * Add image.
      *
-     * @param \AppBundle\Entity\Image $image
+     * @param Image $image
      */
     public function addImage(Image $image)
     {
-        $this->images[] = $image;
-
         $image->setTrick($this);
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+        }
     }
 
     /**
@@ -375,9 +373,10 @@ class Trick
      */
     public function addVideo(Video $video)
     {
-        $this->videos[] = $video;
-
         $video->setTrick($this);
+        if (!$this->videos->contains($video)) {
+            $this->videos->add($video);
+        }
     }
 
     /**
@@ -407,9 +406,10 @@ class Trick
      */
     public function addComment(Comment $comment)
     {
-        $this->comments[] = $comment;
-
         $comment->setTrick($this);
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+        }
     }
 
     /**

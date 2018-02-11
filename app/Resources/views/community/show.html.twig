@@ -14,7 +14,7 @@
 {% block community_body %}
     <div class="trick-info pb-3">
         {% if is_granted('edit', trick) %}
-            <a class="btn btn-sm btn-outline-info mb-3 mr-2" href="{{ path('admin_trick_edit', {id: trick.id}) }}">
+            <a class="btn btn-sm btn-outline-info mb-3 mr-2" href="{{ path('admin_trick_edit', {slug: trick.slug}) }}">
                 <i class="fa fa-pencil pr-2" aria-hidden="true"></i>Edit
             </a>
             <button type="button" class="btn btn-sm btn-outline-danger mb-3" data-toggle="modal" data-target="#confirmationModal">

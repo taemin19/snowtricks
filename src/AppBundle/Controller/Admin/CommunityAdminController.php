@@ -4,11 +4,11 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Trick;
 use AppBundle\Form\TrickForm;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -82,14 +82,57 @@ class CommunityAdminController extends Controller
     /**
      * Displays a form to edit an existing Trick entity.
      *
-     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="admin_trick_edit")
+     * @Route("/{slug}/edit", name="admin_trick_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Trick $trick)
+    public function editAction(Request $request, $slug)
     {
+        $trick = $this->getDoctrine()
+            ->getRepository(Trick::class)
+            ->getOneBySlug($slug)
+        ;
+
+        if (!$trick) {
+            throw $this->createNotFoundException('The trick does not exist');
+        }
+
         $this->denyAccessUnlessGranted('edit', $trick, 'Tricks can only be edited by their authors.');
 
-        return new Response('<html><body>Admin edit!</body></html>');
+        // Create an ArrayCollection of the current Image objects in the database
+        $originalImages = new ArrayCollection();
+        foreach ($trick->getImages() as $image) {
+            $originalImages->add($image);
+        }
+
+        $form = $this->createForm(TrickForm::class, $trick);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            // remove the relationship between the image and the Trick
+            foreach ($originalImages as $image) {
+                if (false === $trick->getImages()->contains($image)) {
+                    // remove the Trick from the Image
+                    $trick->getImages()->removeElement($image);
+
+                    // delete the Image entirely
+                    $em->remove($image);
+                }
+            }
+
+            $em->persist($trick);
+            $em->flush();
+
+            $this->addFlash('success', 'Trick updated successfully');
+
+            return $this->redirectToRoute('trick_show', ['slug' => $trick->getSlug()]);
+        }
+
+        return $this->render('admin/community/edit.html.twig', [
+            'trick' => $trick,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -108,7 +151,7 @@ class CommunityAdminController extends Controller
         $em->remove($trick);
         $em->flush();
 
-        $this->addFlash('success', 'Trick deleted_successfully!');
+        $this->addFlash('success', 'Trick deleted successfully!');
 
         return $this->redirectToRoute('admin_trick_index');
     }

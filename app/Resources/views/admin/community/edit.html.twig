@@ -1,0 +1,84 @@
+{% extends 'admin/community/layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/form.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Edit Trick
+{% endblock %}
+
+{% block body_id 'admin_trick_edit' %}
+
+{% block aside %}
+    <p class="text-muted font-weight-bold">My Latest Tricks</p>
+    {{ render(controller('AppBundle:Admin\\CommunityAdmin:menu')) }}
+{% endblock %}
+
+{% block community_body %}
+    <h2 class="pb-3">Edit a trick</h2>
+
+    {{ form_start(form) }}
+    <div class="trick-info pb-3">
+        <h2 class="font-weight-bold">{{ trick.title }}</h2>
+        {{ form_row(form.title) }}
+
+        <p>
+            {% for category in trick.categories %}
+                <span class="badge badge-pill badge-{{ category.slug }}">{{ category.name|upper }}</span>
+            {% endfor %}
+        </p>
+        {{ form_row(form.categories) }}
+
+        <p class="text-muted">
+            <span><i class="fa fa-user pr-2" aria-hidden="true"></i>{{ trick.author.fullName }}</span>
+            <span><i class="fa fa-calendar-o px-2" aria-hidden="true"></i>{{ trick.createAt|date('Y/m/d') }}&nbsp;</span>
+        </p>
+
+        <p class="lead">{{ trick.description }}</p>
+        {{ form_row(form.description) }}
+
+        <span class="btn btn-outline-dark btn-sm mb-1">
+            Images <span class="badge badge-light">{{ trick.images|length }}</span>
+        </span>
+        <span class="btn btn-outline-dark btn-sm mb-1">
+            Videos <span class="badge badge-light">{{ trick.videos|length }}</span>
+        </span>
+    </div>
+
+    <hr>
+
+    <div class="trick-content pt-3">
+        <h4>How to do it</h4>
+        <p class="text-justify">{{ trick.content|nl2br }}</p>
+        {{ form_row(form.content) }}
+    </div>
+
+    <div class="trick-images py-3">
+        <div class="row">
+            <ul class="images" data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
+                {% for image in form.images %}
+                    <li>{{ form_row(image.file) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="trick-videos py-3">
+        <h4>Watch In Action</h4>
+        <div class="row">
+            <ul class="videos" data-prototype="{{ form_widget(form.videos.vars.prototype)|e('html_attr') }}">
+                {% for video in form.videos %}
+                    <li>{{ form_row(video.filePath) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-sm btn-block" formnovalidate>Save</button>
+
+    {{ form_end(form) }}
+{% endblock %}

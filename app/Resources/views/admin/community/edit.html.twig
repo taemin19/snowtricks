@@ -12,6 +12,13 @@
 {% block body_id 'admin_trick_edit' %}
 
 {% block aside %}
+    <a href="{{ path('admin_trick_new') }}" class="btn btn-block btn-info mb-3">
+        <i class="fa fa-plus pr-2" aria-hidden="true"></i>Create a Trick
+    </a>
+    <button type="button" class="btn btn-block btn-danger mb-3" data-toggle="modal" data-target="#confirmationModal">
+        <i class="fa fa-trash pr-2" aria-hidden="true"></i>Delete the Trick
+    </button>
+    {{ include('admin/community/_delete_trick_confirmation.html.twig') }}
     <p class="text-muted font-weight-bold">My Latest Tricks</p>
     {{ render(controller('AppBundle:Admin\\CommunityAdmin:menu')) }}
 {% endblock %}
@@ -56,26 +63,42 @@
     </div>
 
     <div class="trick-images py-3">
-        <div class="row">
-            <ul class="images" data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
-                {% for image in form.images %}
-                    <li>{{ form_row(image.file) }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+        <ul class="images list-unstyled" data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
+            <div class="row">
+            {% for key, image in form.images %}
+                    <li class="col-sm-6">
+                        {% for image in trick.images %}
+                            {% if loop.index0 == key %}
+                                <img class="img" src="{{ asset('uploads/images/' ~ image.filePath) }}" alt="{{ image.alt }}">
+                            {% endif %}
+                        {% endfor %}
+                        {{ form_row(image.file) }}
+                    </li>
+            {% endfor %}
+            </div>
+        </ul>
     </div>
 
     <hr>
 
     <div class="trick-videos py-3">
         <h4>Watch In Action</h4>
-        <div class="row">
-            <ul class="videos" data-prototype="{{ form_widget(form.videos.vars.prototype)|e('html_attr') }}">
-                {% for video in form.videos %}
-                    <li>{{ form_row(video.filePath) }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+        <ul class="videos list-unstyled" data-prototype="{{ form_widget(form.videos.vars.prototype)|e('html_attr') }}">
+            <div class="row">
+            {% for key, video in form.videos %}
+                <li class="col-sm-6">
+                    {% for video in trick.videos %}
+                        {% if loop.index0 == key %}
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="{{ video.filePath }}" allowfullscreen></iframe>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {{ form_row(video.filePath) }}
+                </li>
+            {% endfor %}
+            </div>
+        </ul>
     </div>
 
     <button type="submit" class="btn btn-success btn-sm btn-block" formnovalidate>Save</button>

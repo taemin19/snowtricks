@@ -103,6 +103,11 @@ class CommunityAdminController extends Controller
         foreach ($trick->getImages() as $image) {
             $originalImages->add($image);
         }
+        // Create an ArrayCollection of the current Video objects in the database
+        $originalVideos = new ArrayCollection();
+        foreach ($trick->getVideos() as $video) {
+            $originalVideos->add($video);
+        }
 
         $form = $this->createForm(TrickForm::class, $trick);
 
@@ -118,6 +123,16 @@ class CommunityAdminController extends Controller
 
                     // delete the Image entirely
                     $em->remove($image);
+                }
+            }
+            // remove the relationship between the video and the Trick
+            foreach ($originalVideos as $video) {
+                if (false === $trick->getVideos()->contains($video)) {
+                    // remove the Trick from the Video
+                    $trick->getVideos()->removeElement($video);
+
+                    // delete the Video entirely
+                    $em->remove($video);
                 }
             }
 

@@ -98,7 +98,7 @@ $(document).ready(function() {
         });
     }
     function addVideoFormDeleteLink($videoFormLi) {
-        var $removeFormA = $('<a href="#" class="btn btn-sm btn-outline-danger mb-3">Delete</a>');
+        var $removeFormA = $('<a href="#" class="btn btn-sm btn-outline-danger mb-3"><i class="fa fa-trash pr-2" aria-hidden="true"></i>Delete</a>');
         $videoFormLi.append($removeFormA);
 
         $removeFormA.on('click', function(e) {

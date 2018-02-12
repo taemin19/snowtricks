@@ -73,6 +73,17 @@ body#trick_show,
 body#admin_trick_index, body#admin_trick_new, body#admin_trick_edit {
   background-color: $st-gray;
 }
+body#trick_show .trick-images .img {
+  width: 100%;
+  max-height: 385px;
+}
+
+/* Page: 'Community trick edit'
+   ------------------------------------------------------------------------- */
+body#admin_trick_edit .trick-images .img {
+  width: 100%;
+  max-height: 285px;
+}
 
 /* Page: 'Login' 'Register'
    ------------------------------------------------------------------------- */

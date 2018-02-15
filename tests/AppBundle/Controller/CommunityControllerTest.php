@@ -21,7 +21,7 @@ class CommunityControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/snowboard/');
 
         $this->assertCount(
-            6,
+            0,
             $crawler->filter('div.card'),
             'The snowboard page displays the right number of tricks.'
         );

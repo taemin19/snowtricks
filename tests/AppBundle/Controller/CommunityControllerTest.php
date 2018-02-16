@@ -21,7 +21,7 @@ class CommunityControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/snowboard/');
 
         $this->assertCount(
-            0,
+            6, // in the CommunityController the number of tricks is PER_PAGE = 6
             $crawler->filter('div.card'),
             'The snowboard page displays the right number of tricks.'
         );

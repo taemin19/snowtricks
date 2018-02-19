@@ -28,6 +28,19 @@ footer .social-link .fa {
   font-size: 1.4rem;
 }
 
+/* Scroll top button
+   ------------------------------------------------------------------------- */
+.scroll-top {
+  position: fixed;
+  right: 15px;
+  bottom: 20px;
+  z-index: 99;
+  background-color: rgba(0,0,0,0.4);
+  color: $white;
+  padding: 5px 10px;
+  display: none;
+}
+
 /* Loading image on homepage load
    ------------------------------------------------------------------------- */
 #homepage .loader {
@@ -124,7 +137,7 @@ body#admin_profile_show .avatar img {
 /* Responsive
    ------------------------------------------------------------------------- */
 @include media-breakpoint-up(sm) {
-  body#homepage .btn {
+  body#homepage a.btn {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -162,7 +175,7 @@ body#admin_profile_show .avatar img {
   }
 }
 @include media-breakpoint-up(lg) {
-  body#homepage .btn {
+  body#homepage a.btn {
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;

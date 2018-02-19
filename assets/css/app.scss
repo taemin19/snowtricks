@@ -15,8 +15,8 @@ h1, h2, h3, h4 {
 
 /* Basic styles
    ------------------------------------------------------------------------- */
-button:focus {
-  outline: none;
+button:focus, a:focus {
+  box-shadow: none !important;
 }
 
 /* Page elements

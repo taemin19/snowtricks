@@ -37,15 +37,15 @@
 
         <p class="lead">{{ trick.description }}</p>
 
-        <span class="btn btn-outline-dark btn-sm mb-1">
+        <a href="#images" class="scroll-to btn btn-outline-info btn-sm mb-1">
             Images <span class="badge badge-light">{{ trick.images|length }}</span>
-        </span>
-        <span class="btn btn-outline-dark btn-sm mb-1">
+        </a>
+        <a href="#videos" class="scroll-to btn btn-outline-info btn-sm mb-1">
             Videos <span class="badge badge-light">{{ trick.videos|length }}</span>
-        </span>
-        <span class="btn btn-outline-dark btn-sm mb-1">
+        </a>
+        <a href="#comments" class="scroll-to btn btn-outline-info btn-sm mb-1">
             Comments <span class="badge badge-light">{{ trick.comments|length }}</span>
-        </span>
+        </a>
     </div>
 
     <hr>
@@ -55,7 +55,7 @@
         <p class="text-justify">{{ trick.content|nl2br }}</p>
     </div>
 
-    <div class="trick-images py-3">
+    <div id="images" class="trick-images py-3">
         {% if trick.images is empty %}
             <h4>Images</h4>
             <p>There are no images yet.</p>
@@ -95,7 +95,7 @@
 
     <hr>
 
-    <div class="trick-videos py-3">
+    <div id="videos" class="trick-videos py-3">
         <h4>Watch In Action</h4>
         {% if trick.videos is empty %}
             <p>There are no videos yet.</p>
@@ -139,7 +139,7 @@
 
     <hr>
 
-    <div id="comment" class="trick-comments py-3">
+    <div id="comments" class="trick-comments py-3">
         <h4>Comments</h4>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {{ include('admin/community/_comment_form.html.twig') }}

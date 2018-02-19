@@ -19,4 +19,20 @@ $(document).ready(function() {
         $('html, body').animate( { scrollTop: $(section).offset().top }, speed );
         return false;
     });
+
+    // scroll top button
+    $(window).scroll(function() {
+        // if user scrolls down - show scroll to top button
+        if ($(this).scrollTop() > 200) {
+            $('.scroll-top').fadeIn();
+        } else {
+            $('.scroll-top').fadeOut();
+        }
+
+    });
+
+    $('.scroll-top').click(function() {
+        $('html, body').animate( { scrollTop: 0 }, 800);
+        return false;
+    });
 });

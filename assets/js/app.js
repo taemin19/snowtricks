@@ -35,4 +35,10 @@ $(document).ready(function() {
         $('html, body').animate( { scrollTop: 0 }, 800);
         return false;
     });
+
+    // remove flash message
+    setTimeout(function(){
+        $('.messages').fadeOut('slow', function () {
+        });
+    },4000);
 });

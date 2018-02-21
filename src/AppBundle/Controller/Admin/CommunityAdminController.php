@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Controller used to manage community contents in the backend.
  *
- * @Route("/admin/trick")
+ * @Route("/admin")
  * @Security("has_role('ROLE_ADMIN')")
  */
 class CommunityAdminController extends Controller
@@ -25,8 +25,8 @@ class CommunityAdminController extends Controller
     /**
      * Lists all Trick entities.
      *
-     * @Route("/", defaults={"page": "1"}, name="admin_trick_index")
-     * @Route("/page/{page}", requirements={"page": "[1-9]\d*"}, name="trick_index_paginated")
+     * @Route("/tricks", defaults={"page": "1"}, name="admin_trick_index")
+     * @Route("/tricks/page/{page}", requirements={"page": "[1-9]\d*"}, name="trick_index_paginated")
      * @Method("GET")
      */
     public function indexAction(int $page)

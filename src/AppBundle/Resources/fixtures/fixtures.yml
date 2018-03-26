@@ -19,7 +19,7 @@ AppBundle\Entity\Trick:
                  Try riding a bit in this position. Stay on the flat surface. Push off with your back leg, from the toe or heel edge.
                  It’s of prime importance you get a feel for the slide on a flat board. When sliding, place your back leg in the center of the board and push up against the back binding from the inner side.
                  It’s a very useful exercise, as this is how you’ll be going onto the lift and exiting it. Also, it’s a great way to quickly cover flat surfaces.
-        categories: ['@basic']
+        categories: '@basic'
     heel_slide:
         author: '@user_2'
         title: Heel Slide
@@ -30,19 +30,19 @@ AppBundle\Entity\Trick:
                  Start sitting down on the slope, facing the direction of movement. Stand up and immediately push onto your heels.
                  You must learn to balance on the heel edge. Moving your toes should quickly reveal the principle behind it. When you raise your toes, you brake. When you lower them slightly, you begin movement. Keep your shoulders straight and your weight over the center of the board. Keep your eyes forward. Don’t lean back or forward too hard.
                  Now let’s try riding down in the same fashion, but this time shifting your weight onto one foot. The foot you shift onto will determine the direction of movement. Then try the other foot. Your trajectory will look similar to a falling leaf.
-        categories: ['@basic']
+        categories: '@basic'
     nose:
         author: '@user_3'
         title: Nose
         description: Front hand grabs the nose of the board.
         content: Front hand grabs the nose of the board.
-        categories: ['@grab']
+        categories: '@grab'
     japan:
         author: '@user_4'
         title: Japan
         description: The front hand grabs the toe edge. The knees are bent and the nose of the board is pulled up behind your head.
         content: The front hand grabs the toe edge. The knees are bent and the nose of the board is pulled up behind your head.
-        categories: ['@grab']
+        categories: '@grab'
     air:
         author: '@user_5'
         title: Air
@@ -51,7 +51,7 @@ AppBundle\Entity\Trick:
                  Accelerate, riding straight on a flat board. Before the jump, crouch down a little more and prepare for the launch.
                  Pop off the jump with your back leg. Once you’re in the air, relax and watch your landing spot.
                  Land, absorbing the impact with your legs.
-        categories: ['@jump_spin']
+        categories: '@jump_spin'
     ollie:
         author: '@user_6'
         title: Ollie
@@ -62,7 +62,7 @@ AppBundle\Entity\Trick:
                  Practice on a relatively flat slope, riding at medium speed. Before the jump, crouch down a little, but don’t go into a squat.
                  Bring up the nose and, making use of the board’s flexibility, jump up with your back leg. Once in the air, bring up your knees and level out the board.
                  Land on the entire surface of the board, knees slightly bent, crouching down on impact.
-        categories: ['@jump_spin']
+        categories: '@jump_spin'
     bs_50_50:
         author: '@user_7'
         title: BS 50-50
@@ -71,7 +71,7 @@ AppBundle\Entity\Trick:
                  Knees are bent and ready to execute an ollie.
                  The entry is performed with a classic ollie. Ride up to the rail at a minimal angle (literaly make it almost parallel), transfer part of your weight towards the rear edge, so that you can steer yourself onto the top of the rail once you perform the snap. The key to a succesfull grind is landing exactly in the center of the rail, i.e. on the top of the railing surface, thus allowing you to catch your balance.
                  If you've jumped onto the obstacle correctly, then catching and holding your balance shouldn't be much of a problem, so once you feel confident with your 50‑50 entry, you can move on to various 180, 360 and 540 exits.
-        categories: ['@slide']
+        categories: '@slide'
     bs_noseslide:
         author: '@user_8'
         title: BS Noseslide
@@ -80,7 +80,7 @@ AppBundle\Entity\Trick:
                  Knees are bent and ready to execute an ollie, weight is on the rear edge.
                  The moment you push off, turn your legs perpendicular to the rail, but keep your shoulders in their original position — this will help with the spin later on.
                  Catch your balance, ride to the end of the obstacle and return your shoulders and board to their original position.
-        categories: ['@slide']
+        categories: '@slide'
 
 AppBundle\Entity\Image:
     skating_image-1:

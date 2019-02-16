@@ -5,7 +5,6 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\Trick;
 use AppBundle\Form\TrickForm;
 use Doctrine\Common\Collections\ArrayCollection;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,8 +25,7 @@ class CommunityAdminController extends Controller
      * Lists all Trick entities.
      *
      * @Route("/tricks", defaults={"page": "1"}, name="admin_trick_index")
-     * @Route("/tricks/page/{page}", requirements={"page": "[1-9]\d*"}, name="trick_index_paginated")
-     * @Method("GET")
+     * @Route("/tricks/page/{page}", methods={"GET"}, requirements={"page": "[1-9]\d*"}, name="trick_index_paginated")
      */
     public function indexAction(int $page)
     {
@@ -54,8 +52,7 @@ class CommunityAdminController extends Controller
     /**
      * Creates a new Trick entity.
      *
-     * @Route("/new", name="admin_trick_new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", methods={"GET", "POST"}, name="admin_trick_new")
      */
     public function newAction(Request $request)
     {
@@ -83,8 +80,7 @@ class CommunityAdminController extends Controller
     /**
      * Displays a form to edit an existing Trick entity.
      *
-     * @Route("/{slug}/edit", name="admin_trick_edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{slug}/edit", methods={"GET", "POST"}, name="admin_trick_edit")
      */
     public function editAction(Request $request, $slug)
     {
@@ -154,8 +150,7 @@ class CommunityAdminController extends Controller
     /**
      * Deletes a Trick entity.
      *
-     * @Route("/{id}/delete", name="admin_trick_delete")
-     * @Method("POST")
+     * @Route("/{id}/delete", methods={"POST"}, name="admin_trick_delete")
      */
     public function deleteAction(Request $request, Trick $trick)
     {

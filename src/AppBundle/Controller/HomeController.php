@@ -3,17 +3,15 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Trick;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends Controller
 {
     const PER_PAGE = 6;
 
     /**
-     * @Route("/", name="homepage")
-     * @Method("GET")
+     * @Route("/", methods={"GET"}, name="homepage")
      */
     public function indexAction()
     {

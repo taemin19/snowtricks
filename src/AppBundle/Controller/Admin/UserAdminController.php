@@ -4,7 +4,6 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\User;
 use AppBundle\Form\UserEditForm;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,8 +21,7 @@ class UserAdminController extends Controller
     /**
      * Displays a user profile and a form to edit it.
      *
-     * @Route("/{username}", name="admin_profile_show")
-     * @Method({"GET", "POST"})
+     * @Route("/{username}", methods={"GET", "POST"}, name="admin_profile_show")
      */
     public function showAction(Request $request, string $username)
     {

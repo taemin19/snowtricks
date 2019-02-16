@@ -4,10 +4,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Trick;
 use AppBundle\Form\CommentForm;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Controller used to manage community contents in the public part of the site.
@@ -21,8 +20,7 @@ class CommunityController extends Controller
 
     /**
      * @Route("/", defaults={"page": "1"}, name="trick_index")
-     * @Route("/page/{page}", requirements={"page": "[1-9]\d*"}, name="trick_index_paginated")
-     * @Method("GET")
+     * @Route("/page/{page}", methods={"GET"}, requirements={"page": "[1-9]\d*"}, name="trick_index_paginated")
      */
     public function indexAction(int $page)
     {
@@ -47,8 +45,7 @@ class CommunityController extends Controller
     /**
      * Displays a trick and comment form.
      *
-     * @Route("/tricks/{slug}", name="trick_show")
-     * @Method({"GET", "POST"})
+     * @Route("/tricks/{slug}", methods={"GET", "POST"}, name="trick_show")
      */
     public function showAction(Request $request, string $slug)
     {

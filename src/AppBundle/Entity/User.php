@@ -2,10 +2,10 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="st_user")
@@ -58,7 +58,7 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
-     * The encoded password
+     * The encoded password.
      *
      * @ORM\Column(type="string")
      */
@@ -177,7 +177,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Set plainPassword
+     * Set plainPassword.
      *
      * @param $plainPassword
      */
@@ -189,7 +189,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Get plainPassword
+     * Get plainPassword.
      *
      * @return string
      */
@@ -220,13 +220,12 @@ class User implements UserInterface, \Serializable
         if (empty($roles)) {
             $roles[] = 'ROLE_ADMIN';
         }
+
         return array_unique($roles);
     }
 
     /**
      * Get salt.
-     *
-     * @return null
      */
     public function getSalt()
     {
@@ -253,21 +252,21 @@ class User implements UserInterface, \Serializable
      */
     public function serialize(): string
     {
-        return serialize(array(
+        return serialize([
             $this->id,
             $this->username,
             $this->password,
-        ));
+        ]);
     }
+
     /**
      * {@inheritdoc}
      */
     public function unserialize($serialized): void
     {
-        list (
+        list(
             $this->id,
             $this->username,
-            $this->password,
-            ) = unserialize($serialized);
+            $this->password) = unserialize($serialized);
     }
 }

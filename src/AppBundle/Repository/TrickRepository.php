@@ -21,7 +21,7 @@ class TrickRepository extends EntityRepository
         ;
 
         $qb
-            ->setFirstResult(($page-1) * $limit)
+            ->setFirstResult(($page - 1) * $limit)
             ->setMaxResults($limit)
         ;
 
@@ -44,7 +44,7 @@ class TrickRepository extends EntityRepository
         ;
 
         $qb
-            ->setFirstResult(($page-1) * $limit)
+            ->setFirstResult(($page - 1) * $limit)
             ->setMaxResults($limit)
         ;
 

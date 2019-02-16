@@ -14,14 +14,14 @@ class ImageForm extends AbstractType
     {
         $builder
             ->add('file', FileType::class, [
-                'label' => 'Image file'
+                'label' => 'Image file',
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Image::class
+            'data_class' => Image::class,
         ]);
     }
 }

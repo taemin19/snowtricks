@@ -93,7 +93,7 @@ class Image
     }
 
     /**
-     * Set file
+     * Set file.
      *
      * @param UploadedFile|null $file
      */
@@ -101,7 +101,7 @@ class Image
     {
         $this->file = $file;
 
-        if ($this->filePath !== null) {
+        if (null !== $this->filePath) {
             $this->tempPath = $this->filePath;
 
             $this->filePath = null;
@@ -110,7 +110,7 @@ class Image
     }
 
     /**
-     * Get file
+     * Get file.
      */
     public function getFile()
     {
@@ -118,7 +118,7 @@ class Image
     }
 
     /**
-     * Get tempPath
+     * Get tempPath.
      */
     public function getTempPath()
     {

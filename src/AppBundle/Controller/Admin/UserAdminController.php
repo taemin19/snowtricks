@@ -27,8 +27,7 @@ class UserAdminController extends Controller
      */
     public function showAction(Request $request, string $username)
     {
-        if ($username != $this->getUser()->getUsername())
-        {
+        if ($username !== $this->getUser()->getUsername()) {
             throw new AccessDeniedException();
         }
 
@@ -53,13 +52,12 @@ class UserAdminController extends Controller
         }
 
         // Displays the edit form instead of the user name and edit link if form is not validated
-        if ($request->isMethod('POST'))
-        {
+        if ($request->isMethod('POST')) {
             return $this->render('admin/user/profile_show.html.twig', [
                 'user' => $user,
                 'form' => $form->createView(),
                 'showInfo' => '',
-                'showForm' => 'show'
+                'showForm' => 'show',
             ]);
         }
 
@@ -67,7 +65,7 @@ class UserAdminController extends Controller
             'user' => $user,
             'form' => $form->createView(),
             'showInfo' => 'show',
-            'showForm' => ''
+            'showForm' => '',
         ]);
     }
 }

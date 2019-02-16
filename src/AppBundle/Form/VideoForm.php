@@ -14,14 +14,14 @@ class VideoForm extends AbstractType
         $builder
             ->add('filePath', null, [
                 'label' => 'Video url',
-                'attr' => ['placeholder' => 'e.g. https://www.youtube.com/embed/SQyTWk7OxSI']
+                'attr' => ['placeholder' => 'e.g. https://www.youtube.com/embed/SQyTWk7OxSI'],
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Video::class
+            'data_class' => Video::class,
         ]);
     }
 }

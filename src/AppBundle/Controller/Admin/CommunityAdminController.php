@@ -35,10 +35,10 @@ class CommunityAdminController extends Controller
 
         $authorTricks = $this->getDoctrine()
             ->getRepository(Trick::class)
-            ->getLatestByAuthor($page,self::PER_PAGE, true, $author)
+            ->getLatestByAuthor($page, self::PER_PAGE, true, $author)
         ;
 
-        $nbPages = ceil(count($authorTricks) / self::PER_PAGE);
+        $nbPages = ceil(\count($authorTricks) / self::PER_PAGE);
 
         if ($page > $nbPages) {
             throw $this->createNotFoundException('The page does not exist');
@@ -47,7 +47,7 @@ class CommunityAdminController extends Controller
         return $this->render('admin/community/index.html.twig', [
             'tricks' => $authorTricks,
             'page' => $page,
-            'nbPages' => $nbPages
+            'nbPages' => $nbPages,
         ]);
     }
 
@@ -74,8 +74,9 @@ class CommunityAdminController extends Controller
 
             return $this->redirectToRoute('trick_show', ['slug' => $trick->getSlug()]);
         }
+
         return $this->render('admin/community/new.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
@@ -176,10 +177,9 @@ class CommunityAdminController extends Controller
         $authorTricks = $this->getDoctrine()
             ->getRepository(Trick::class)
             ->findBy(['author' => $this->getUser()], ['createAt' => 'DESC']);
-        ;
 
         return $this->render('community/menu.html.twig', [
-            'tricks' => $authorTricks
+            'tricks' => $authorTricks,
         ]);
     }
 }

@@ -68,7 +68,7 @@ class DefaultControllerTest extends WebTestCase
     /**
      * User fixtures are randomly generated and there's no guarantee that
      * a given User username will be available.
-     * So change /profile/{username} depending on User fixtures
+     * So change /profile/{username} depending on User fixtures.
      */
     public function getSecureUrls()
     {

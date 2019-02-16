@@ -17,12 +17,12 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        $repository =$this->getDoctrine()->getRepository(Trick::class);
+        $repository = $this->getDoctrine()->getRepository(Trick::class);
 
-        $tricks = $repository->getLatest($page = 1,self::PER_PAGE, true);
+        $tricks = $repository->getLatest($page = 1, self::PER_PAGE, true);
 
         return $this->render('home/index.html.twig', [
-            'tricks' => $tricks
+            'tricks' => $tricks,
         ]);
     }
 }

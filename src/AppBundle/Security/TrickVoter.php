@@ -2,8 +2,8 @@
 
 namespace AppBundle\Security;
 
-use AppBundle\Entity\User;
 use AppBundle\Entity\Trick;
+use AppBundle\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
@@ -23,7 +23,7 @@ class TrickVoter extends Voter
     protected function supports($attribute, $subject)
     {
         // this voter is only executed for three specific permissions on Trick objects
-        return $subject instanceof Trick && in_array($attribute, [self::SHOW, self::EDIT, self::DELETE], true);
+        return $subject instanceof Trick && \in_array($attribute, [self::SHOW, self::EDIT, self::DELETE], true);
     }
 
     /**

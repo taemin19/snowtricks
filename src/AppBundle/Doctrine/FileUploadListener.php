@@ -2,12 +2,12 @@
 
 namespace AppBundle\Doctrine;
 
-use AppBundle\Entity\Image;
-use Doctrine\Common\EventSubscriber;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Doctrine\ORM\Event\LifecycleEventArgs;
 use AppBundle\Entity\Avatar;
+use AppBundle\Entity\Image;
 use AppBundle\Service\FileUploader;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileUploadListener implements EventSubscriber
 {
@@ -77,7 +77,7 @@ class FileUploadListener implements EventSubscriber
 
         $tempPath = $entity->getTempPath();
 
-        if ($tempPath !== null) {
+        if (null !== $tempPath) {
             $oldFile = $this->uploader->getTargetDir().'/'.$tempPath;
             if (file_exists($oldFile)) {
                 unlink($oldFile);

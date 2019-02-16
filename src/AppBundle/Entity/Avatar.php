@@ -87,7 +87,7 @@ class Avatar
     }
 
     /**
-     * Set file
+     * Set file.
      *
      * @param UploadedFile|null $file
      */
@@ -95,7 +95,7 @@ class Avatar
     {
         $this->file = $file;
 
-        if ($this->filePath !== null) {
+        if (null !== $this->filePath) {
             $this->tempPath = $this->filePath;
 
             $this->filePath = null;
@@ -104,7 +104,7 @@ class Avatar
     }
 
     /**
-     * Get file
+     * Get file.
      */
     public function getFile()
     {
@@ -112,11 +112,10 @@ class Avatar
     }
 
     /**
-     * Get tempPath
+     * Get tempPath.
      */
     public function getTempPath()
     {
         return $this->tempPath;
     }
 }
-

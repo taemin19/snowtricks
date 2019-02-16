@@ -17,15 +17,15 @@ class UserRegistrationForm extends AbstractType
         $builder
             ->add('fullName', null, [
                 'label_attr' => ['class' => 'sr-only'],
-                'attr' => ['placeholder' => 'Full name']
+                'attr' => ['placeholder' => 'Full name'],
             ])
             ->add('email', EmailType::class, [
                 'label_attr' => ['class' => 'sr-only'],
-                'attr' => ['placeholder' => 'Email']
+                'attr' => ['placeholder' => 'Email'],
             ])
             ->add('username', null, [
                 'label_attr' => ['class' => 'sr-only'],
-                'attr' => ['placeholder' => 'Username']
+                'attr' => ['placeholder' => 'Username'],
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -33,16 +33,16 @@ class UserRegistrationForm extends AbstractType
                     'label_attr' => ['class' => 'sr-only'],
                     'attr' => [
                         'placeholder' => 'Password',
-                        'autocomplete' => 'off'
-                    ]
+                        'autocomplete' => 'off',
+                    ],
                 ],
                 'second_options' => [
                     'label_attr' => ['class' => 'sr-only'],
                     'attr' => [
                         'placeholder' => 'Repeat Password',
-                        'autocomplete' => 'off'
-                    ]
-                ]
+                        'autocomplete' => 'off',
+                    ],
+                ],
             ]);
     }
 
@@ -50,7 +50,7 @@ class UserRegistrationForm extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'validation_groups' => ['Default', 'Registration']
+            'validation_groups' => ['Default', 'Registration'],
         ]);
     }
 }

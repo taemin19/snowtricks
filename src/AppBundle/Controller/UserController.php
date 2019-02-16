@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends Controller
 {
     /**
-     * Creates a new User entity
+     * Creates a new User entity.
      *
      * @Route("/register", name="user_register")
      * @Method({"GET", "POST"})
@@ -34,7 +34,7 @@ class UserController extends Controller
         }
 
         return $this->render('user/register.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 }

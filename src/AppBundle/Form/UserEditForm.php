@@ -14,16 +14,16 @@ class UserEditForm extends AbstractType
     {
         $builder
             ->add('fullName', null, [
-                'attr' => ['placeholder' => 'Full name']
+                'attr' => ['placeholder' => 'Full name'],
             ])
             ->add('email', EmailType::class, [
-                'attr' => ['placeholder' => 'Email']
+                'attr' => ['placeholder' => 'Email'],
             ])
             ->add('username', null, [
-                'attr' => ['placeholder' => 'Username']
+                'attr' => ['placeholder' => 'Username'],
             ])
             ->add('avatar', AvatarForm::class, [
-                'required' => false
+                'required' => false,
             ])
         ;
     }
@@ -31,7 +31,7 @@ class UserEditForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class
+            'data_class' => User::class,
         ]);
     }
 }

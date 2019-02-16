@@ -19,7 +19,7 @@ class AvatarForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Avatar::class
+            'data_class' => Avatar::class,
         ]);
     }
 }
